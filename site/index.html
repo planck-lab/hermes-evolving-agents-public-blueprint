@@ -13,6 +13,7 @@
   <meta name="twitter:description" content="Evidence-first blueprint for bounded agent maturity, governance framing, and challengeable public claims.">
   <meta property="og:image" content="assets/social-preview.svg">
   <meta name="twitter:image" content="assets/social-preview.svg">
+  <meta name="theme-color" content="#0b1020">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌑</text></svg>">
   <style>
     :root {
@@ -115,7 +116,21 @@
     }
     .risk { background: rgba(120, 53, 15, 0.24); border-color: rgba(251,191,36,0.24); color: #ffd8a8; }
     .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
-    .hero-grid { display:grid; grid-template-columns: 1.25fr .95fr; gap: 18px; align-items: stretch; margin-top: 22px; }
+    .hero-grid { display:grid; grid-template-columns: 1.28fr .92fr; gap: 20px; align-items: stretch; margin-top: 22px; }
+    .lang-switch {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px;
+      border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(255,255,255,0.03); margin-left: auto;
+    }
+    .lang-switch a {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:64px; padding:8px 14px; border-radius:999px; font-size:13px; font-weight:700;
+      color: var(--muted); text-decoration:none;
+    }
+    .lang-switch a.active {
+      background: rgba(124,196,255,0.16); color: var(--text); border: 1px solid rgba(124,196,255,0.24);
+    }
+    .lang-switch a:not(.active):hover { color: var(--text); background: rgba(255,255,255,0.04); }
     .hero-panel {
       border: 1px solid var(--line);
       border-radius: 22px;
@@ -134,6 +149,44 @@
     .story-list li { color: var(--muted); }
     .feature-figure { margin-top: 12px; }
     .feature-figure img { width: 100%; display:block; border-radius: 18px; border: 1px solid var(--line); }
+    .figure {
+      position: relative;
+      cursor: zoom-in;
+    }
+    .figure::after {
+      content: 'Click to enlarge';
+      position: absolute; right: 18px; bottom: 18px;
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      color: var(--text); background: rgba(8,12,26,0.72);
+      border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px;
+    }
+    .figure img { aspect-ratio: 16 / 10; object-fit: cover; }
+    .story-list strong { color: var(--text); }
+    .story-list li { margin-bottom: 10px; }
+    .kpi-row {
+      display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px;
+    }
+    .kpi {
+      background: rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:18px; padding:16px;
+    }
+    .kpi strong { display:block; font-size: 1.35rem; color: var(--text); }
+    .lightbox {
+      position: fixed; inset: 0; display: none; place-items: center; padding: 28px;
+      background: rgba(3, 6, 15, 0.84); z-index: 1000;
+    }
+    .lightbox.open { display: grid; }
+    .lightbox-panel {
+      width: min(1200px, 96vw); max-height: 92vh; overflow: auto;
+      background: rgba(9,16,29,0.96); border: 1px solid var(--line); border-radius: 26px; padding: 18px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+    }
+    .lightbox img { width: 100%; height: auto; display:block; border-radius: 18px; }
+    .lightbox-caption { color: var(--muted); font-size: 14px; margin-top: 12px; }
+    .lightbox-close {
+      position: sticky; top: 0; margin-left: auto; display:inline-flex; cursor:pointer;
+      padding: 8px 12px; border-radius: 999px; border:1px solid var(--line);
+      background: rgba(255,255,255,0.04); color: var(--text); font-weight:700;
+    }
     .footer { color: var(--muted); font-size: 14px; margin-top: 20px; }
     @media (max-width: 920px) {
       .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 12; }
@@ -147,7 +200,9 @@
       table { min-width: 560px; font-size: 14px; }
       th, td { padding: 10px 10px; }
       .caption { font-size: 13px; }
-      .hero-grid, .hero-stats { grid-template-columns: 1fr; }
+      .hero-grid, .hero-stats, .kpi-row { grid-template-columns: 1fr; }
+      .lang-switch { margin-left: 0; width: 100%; justify-content: center; }
+      .lightbox { padding: 14px; }
     }
 </style>
 </head>
@@ -162,6 +217,10 @@
       <a class="pill" href="#limits">Limits</a>
       <a class="pill" href="#references">References</a>
       <a class="pill" href="#faq">FAQ</a>
+      <div class="lang-switch" aria-label="Language switcher">
+        <a class="active" href="index.html">EN</a>
+        <a href="de/index.html">DE</a>
+      </div>
     </nav>
 
     <section class="hero" id="overview">
@@ -196,6 +255,11 @@
             <div class="stat"><strong>2</strong><span class="small">rebuilt high-fidelity diagrams</span></div>
           </div>
           <div class="note" style="margin-top:14px;"><strong>Reading rule:</strong> start with scope, then evidence posture, then the bounded verdict. The page is designed to make stronger claims harder, not easier.</div>
+          <div class="kpi-row">
+            <div class="kpi"><strong>Bounded</strong><span class="small">public claim posture stays deliberately narrow</span></div>
+            <div class="kpi"><strong>Visible</strong><span class="small">sources, caveats, and support states stay inspectable</span></div>
+            <div class="kpi"><strong>Practical</strong><span class="small">DE/EN docs, FAQ, and contribution guidance stay one click away</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -359,7 +423,44 @@
       </ol>
     </section>
 
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-panel">
+        <button class="lightbox-close" id="lightbox-close" type="button">Close ✕</button>
+        <img id="lightbox-image" alt="Expanded figure">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+      </div>
+    </div>
+
     <p class="footer">Public-facing communication should remain narrower than the private evidence graph. This page prioritizes legibility, bounded claims, and inspectable references over maximal rhetoric. · See <code>CITATION.cff</code> and <code>CONTRIBUTING.md</code> in the repository for reuse and contribution guidance.</p>
   </main>
+  <script>
+    (() => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const closeBtn = document.getElementById('lightbox-close');
+      const openLightbox = (img, caption) => {
+        lightboxImage.src = img.getAttribute('src');
+        lightboxImage.alt = img.getAttribute('alt') || 'Expanded figure';
+        lightboxCaption.textContent = caption || img.getAttribute('alt') || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      };
+      const closeLightbox = () => {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.removeAttribute('src');
+      };
+      document.querySelectorAll('.figure').forEach(fig => {
+        const img = fig.querySelector('img');
+        const caption = fig.parentElement.querySelector('.caption')?.textContent?.trim() || '';
+        if (!img) return;
+        fig.addEventListener('click', () => openLightbox(img, caption));
+      });
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+    })();
+  </script>
 </body>
 </html>

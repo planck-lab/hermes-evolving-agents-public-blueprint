@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/index.html">🌐 Live Website</a> ·
+  <a href="https://planck-lab.github.io/hermes-evolving-agents-public-blueprint/">🌐 Live Website</a> ·
   <a href="#abstract">Abstract</a> ·
   <a href="#start-with-the-right-path">Reading Path</a> ·
   <a href="#recommended-figures-and-tables">Figures & Tables</a> ·
