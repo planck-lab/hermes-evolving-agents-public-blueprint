@@ -3,284 +3,313 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hermes Evolving Agents Roadmap (Public Blueprint)</title>
+  <title>Hermes Evolving Agents Roadmap — Evidence-First Blueprint</title>
   <style>
     :root {
       color-scheme: light;
-      --bg: #f5f7fb;
+      --bg: #f4f7fb;
       --surface: #ffffff;
-      --surface-2: #eef3ff;
+      --surface-2: #eef4ff;
+      --surface-3: #f8fafc;
       --text: #0f172a;
       --muted: #475569;
-      --line: #dbe2ea;
+      --line: #d9e2ec;
       --accent: #2563eb;
       --accent-soft: #dbeafe;
-      --success-soft: #dcfce7;
-      --warning-soft: #fff7d6;
-      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
-      --code-bg: #f1f5f9;
+      --green-soft: #dcfce7;
+      --amber-soft: #fff7d6;
+      --rose-soft: #ffe4e6;
+      --shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
       color: var(--text);
-      line-height: 1.6;
+      background: linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
+      line-height: 1.65;
     }
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 20px 72px;
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 72px; }
+    .topnav {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px);
+      background: rgba(244,247,251,.86); padding: 10px 0;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 999px; padding: 8px 12px; font-size: 14px; font-weight: 600;
+      background: var(--surface); border: 1px solid var(--line);
+    }
+    .pill.primary { background: var(--accent-soft); color: #1d4ed8; border-color: #bfdbfe; }
+    .pill.success { background: var(--green-soft); color: #166534; border-color: #bbf7d0; }
+    .pill.warning { background: var(--amber-soft); color: #92400e; border-color: #fde68a; }
+    .hero, .section, .figure-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 28px;
+      box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
     }
     .hero {
-      background: radial-gradient(circle at top right, rgba(37,99,235,.18), transparent 30%), var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-      margin-bottom: 24px;
+      background: radial-gradient(circle at top right, rgba(37,99,235,.16), transparent 30%), var(--surface);
     }
     .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 14px;
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-      font-size: 12px;
+      color: var(--accent); text-transform: uppercase; font-size: 12px; letter-spacing: .05em; font-weight: 800;
+      margin-bottom: 12px;
     }
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      line-height: 1.06;
-      margin: 0 0 14px;
-      letter-spacing: -.02em;
-    }
-    h2, h3 { line-height: 1.15; letter-spacing: -.01em; }
-    p { margin: 0 0 14px; }
-    .lead {
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 760px;
-    }
-    .badge-row, .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .badge, .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 1px solid transparent;
-    }
-    .badge.primary { background: var(--accent-soft); color: #1d4ed8; }
-    .badge.warning { background: var(--warning-soft); color: #8a5a00; }
-    .badge.success { background: var(--success-soft); color: #166534; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-      margin-top: 22px;
-    }
+    h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.04; margin: 0 0 14px; }
+    h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin: 0 0 10px; line-height: 1.1; }
+    h3 { font-size: 1.05rem; margin: 0 0 8px; }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 860px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
     .card {
-      grid-column: span 12;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
+      background: var(--surface-3); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
     }
-    .card.soft { background: var(--surface-2); }
-    .card h2 { margin: 0 0 8px; font-size: 1.35rem; }
-    .card h3 { margin: 18px 0 8px; font-size: 1rem; }
-    .subtle { color: var(--muted); }
+    .small { color: var(--muted); font-size: 14px; }
+    .muted { color: var(--muted); }
     .kicker {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      margin-bottom: 8px;
+      color: var(--accent); text-transform: uppercase; font-size: 12px; font-weight: 800; letter-spacing: .04em; margin-bottom: 8px;
     }
-    .path-card { grid-column: span 3; }
-    .path-card.primary { grid-column: span 6; }
-    .half { grid-column: span 6; }
     ul, ol { margin: 10px 0 0; padding-left: 20px; }
     li + li { margin-top: 6px; }
     code {
+      background: #eff6ff; border-radius: 8px; padding: 2px 6px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      background: var(--code-bg);
-      padding: 2px 6px;
-      border-radius: 8px;
       font-size: .95em;
     }
-    .metric-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 14px;
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 15px; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 10px 8px; vertical-align: top; }
+    th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+    .figure {
+      width: 100%; background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+      border: 1px solid var(--line); border-radius: 20px; padding: 16px; overflow: auto;
     }
-    .metric {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
+    figure { margin: 0; }
+    figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
+    .ref-list li { margin-bottom: 10px; }
+    .note {
+      padding: 14px 16px; border-radius: 16px; background: var(--surface-2); border: 1px solid #bfdbfe;
+      color: #1e3a8a;
     }
-    .metric strong {
-      display: block;
-      font-size: 13px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      margin-bottom: 6px;
-    }
-    .list-compact { padding-left: 18px; }
-    .footer-note {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .divider {
-      height: 1px;
-      background: var(--line);
-      margin: 18px 0;
-    }
-    @media (max-width: 900px) {
-      .path-card, .path-card.primary, .half { grid-column: span 12; }
-      .metric-list { grid-template-columns: 1fr; }
-      .hero { padding: 24px; }
+    .risk { background: #fff7ed; border-color: #fdba74; color: #9a3412; }
+    .footer { color: var(--muted); font-size: 14px; margin-top: 20px; }
+    @media (max-width: 920px) {
+      .span-4, .span-6, .span-8, .span-12 { grid-column: span 12; }
+      .topnav { position: static; }
     }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="hero">
-      <div class="eyebrow">Local blueprint · DE/EN publication prep</div>
+    <nav class="topnav">
+      <a class="pill" href="#overview">Overview</a>
+      <a class="pill" href="#story">Story</a>
+      <a class="pill" href="#architecture">Architecture</a>
+      <a class="pill" href="#evidence">Evidence</a>
+      <a class="pill" href="#governance">Governance</a>
+      <a class="pill" href="#references">References</a>
+    </nav>
+
+    <section class="hero" id="overview">
+      <div class="eyebrow">Evidence-first blueprint · scientific communication draft</div>
       <h1>Hermes Evolving Agents Roadmap</h1>
-      <p class="lead">Depersonalized roadmap and evidence package for describing the maturity of a learning-capable agent system. Structured conservatively enough that it can now be published as a bounded blueprint if desired.</p>
-      <div class="badge-row">
-        <span class="badge primary">Status: publishable bounded blueprint</span>
-        <span class="badge warning">Scope: still unpublished</span>
-        <span class="badge success">Evidence posture: bounded</span>
+      <p class="lead">A public-facing blueprint for describing agent maturity under bounded autonomy, explicit governance, and challengeable evidence. The purpose is not to claim broad self-improvement, but to show how an agent system can be evaluated, governed, and communicated with scientific restraint [1][2][3][4].</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
+        <span class="pill primary">Status: publishable bounded blueprint</span>
+        <span class="pill warning">Claim posture: non-longitudinal</span>
+        <span class="pill success">Method: evidence-first</span>
       </div>
-      <div class="metric-list">
-        <div class="metric">
-          <strong>What this is</strong>
-          Curated entry point into the narrative, evidence model, and release-readiness material.
+    </section>
+
+    <section class="section" id="story">
+      <div class="kicker">Image story</div>
+      <h2>From hype-heavy autonomy claims to bounded, testable system maturity</h2>
+      <div class="grid">
+        <div class="span-4 card">
+          <h3>Figure story 1 — The problem</h3>
+          <p class="small">Many agent narratives jump directly from capability demos to broad autonomy claims. Public trust breaks when evaluation, governance, and uncertainty are underspecified [1][4].</p>
         </div>
-        <div class="metric">
-          <strong>What this is not</strong>
-          Not a claim of broad autonomous self-improvement and not a license to overstate the current evidence.
+        <div class="span-4 card">
+          <h3>Figure story 2 — The operating model</h3>
+          <p class="small">This blueprint treats the agent as a governed loop: signal → review → intervention → change → measurement. Human oversight remains explicit rather than assumed away [2][3][5].</p>
+        </div>
+        <div class="span-4 card">
+          <h3>Figure story 3 — The evidence boundary</h3>
+          <p class="small">The strongest current claim is bounded: the system shows partial proof of controlled feedback and instrumentation discipline, not durable autonomous self-improvement [6][7][8].</p>
         </div>
       </div>
     </section>
 
-    <section class="grid">
-      <article class="card soft half">
-        <div class="kicker">Current bounded takeaway</div>
-        <h2>What can be stated today</h2>
-        <p class="subtle">This is the current public-safe summary after the DE/EN pass, polish pass, and confirmatory go/no-go review.</p>
-        <div class="chip-row">
-          <span class="chip badge primary">bounded proof partially complete</span>
-          <span class="chip badge primary">instrumentation-first reading</span>
-          <span class="chip badge primary">counterfactual same-snapshot comparison</span>
-          <span class="chip badge primary">not yet longitudinal</span>
+    <section class="figure-card" id="architecture">
+      <div class="kicker">Figure 1</div>
+      <h2>Bounded agent maturity architecture</h2>
+      <figure>
+        <div class="figure">
+          <svg viewBox="0 0 1100 420" width="100%" role="img" aria-label="Architecture diagram showing signal intake, review, intervention, runtime, and measurement under governance and references.">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"></path>
+              </marker>
+            </defs>
+            <rect x="20" y="30" width="1060" height="340" rx="24" fill="#f8fbff" stroke="#cbd5e1"/>
+            <rect x="55" y="120" width="150" height="92" rx="18" fill="#dbeafe" stroke="#2563eb"/>
+            <text x="130" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">Signal</text>
+            <text x="130" y="176" text-anchor="middle" font-size="13" fill="#475569">telemetry, alerts,</text>
+            <text x="130" y="194" text-anchor="middle" font-size="13" fill="#475569">candidate issues</text>
+
+            <rect x="250" y="120" width="170" height="92" rx="18" fill="#dcfce7" stroke="#16a34a"/>
+            <text x="335" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#166534">Review</text>
+            <text x="335" y="176" text-anchor="middle" font-size="13" fill="#475569">human-in-the-loop,</text>
+            <text x="335" y="194" text-anchor="middle" font-size="13" fill="#475569">triage, challenge</text>
+
+            <rect x="470" y="120" width="170" height="92" rx="18" fill="#fef3c7" stroke="#d97706"/>
+            <text x="555" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#92400e">Intervention</text>
+            <text x="555" y="176" text-anchor="middle" font-size="13" fill="#475569">conservative change,</text>
+            <text x="555" y="194" text-anchor="middle" font-size="13" fill="#475569">gate or selection rule</text>
+
+            <rect x="690" y="120" width="170" height="92" rx="18" fill="#ede9fe" stroke="#7c3aed"/>
+            <text x="775" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#5b21b6">Runtime</text>
+            <text x="775" y="176" text-anchor="middle" font-size="13" fill="#475569">agent behavior,</text>
+            <text x="775" y="194" text-anchor="middle" font-size="13" fill="#475569">bounded operation</text>
+
+            <rect x="910" y="120" width="135" height="92" rx="18" fill="#ffe4e6" stroke="#e11d48"/>
+            <text x="978" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#9f1239">Measure</text>
+            <text x="978" y="176" text-anchor="middle" font-size="13" fill="#475569">effects, caveats,</text>
+            <text x="978" y="194" text-anchor="middle" font-size="13" fill="#475569">counterfactuals</text>
+
+            <line x1="205" y1="166" x2="250" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+            <line x1="420" y1="166" x2="470" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+            <line x1="640" y1="166" x2="690" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+            <line x1="860" y1="166" x2="910" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+
+            <rect x="140" y="270" width="800" height="56" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="8 6"/>
+            <text x="540" y="294" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">Governance layer: bounded autonomy, documentation, oversight, reversibility, and risk management</text>
+            <text x="540" y="314" text-anchor="middle" font-size="13" fill="#475569">Aligned with NIST AI RMF, NIST GenAI Profile, and human-oversight expectations in the EU AI Act [1][2][3]</text>
+          </svg>
         </div>
-      </article>
-
-      <article class="card half">
-        <div class="kicker">Use the right path</div>
-        <h2>Choose your reader path</h2>
-        <p class="subtle">Most readers should start with the overview path. Evidence reviewers and release operators can go directly to the narrower routes below.</p>
-        <ul class="list-compact">
-          <li><strong>Overview readers</strong> → narrative, scope, phases, methodology, governance, bounded verdict</li>
-          <li><strong>Evidence reviewers</strong> → full proof-case chain and machine-readable artifacts</li>
-          <li><strong>Release operators</strong> → readiness checklist, finish-task order, final manual review</li>
-        </ul>
-      </article>
-
-      <article class="card path-card primary">
-        <div class="kicker">For most readers</div>
-        <h2>Overview path</h2>
-        <p class="subtle">Shortest honest route through the project. Start in English or German, then stay on one narrative path.</p>
-        <ol>
-          <li><strong>Overview entry</strong> — <code>docs/en/index.md</code> or <code>docs/de/index.md</code></li>
-          <li><strong>System scope</strong> — <code>docs/en/system-scope.md</code></li>
-          <li><strong>Phase model</strong> — <code>docs/en/phases.md</code></li>
-          <li><strong>Current state</strong> — <code>docs/en/current-state.md</code></li>
-          <li><strong>Methodology</strong> — <code>docs/en/methodology.md</code></li>
-          <li><strong>Governance and guardrails</strong> — <code>docs/en/governance-and-guardrails.md</code></li>
-          <li><strong>Bounded verdict</strong> — <code>docs/en/proof-case-final-verdict.md</code></li>
-        </ol>
-      </article>
-
-      <article class="card path-card">
-        <div class="kicker">For evidence review</div>
-        <h2>Proof-case chain</h2>
-        <p class="subtle">Use only if you want the bounded evidence chain end to end.</p>
-        <ol>
-          <li><strong>Trace spine</strong> — <code>docs/en/trace-spine.md</code></li>
-          <li><strong>Scaffold</strong> — <code>docs/en/proof-case-scaffold.md</code></li>
-          <li><strong>Signal recovery</strong> — <code>docs/en/proof-case-signal-recovery.md</code></li>
-          <li><strong>Outcome recovery</strong> — <code>docs/en/proof-case-outcome-recovery.md</code></li>
-          <li><strong>Intervention selection</strong> — <code>docs/en/proof-case-intervention-selection.md</code></li>
-          <li><strong>Change record</strong> — <code>docs/en/proof-case-change-record.md</code></li>
-          <li><strong>Measurement spec</strong> — <code>docs/en/proof-case-measurement-spec.md</code></li>
-          <li><strong>Final verdict</strong> — <code>docs/en/proof-case-final-verdict.md</code></li>
-        </ol>
-      </article>
-
-      <article class="card path-card">
-        <div class="kicker">For release prep</div>
-        <h2>Release decision path</h2>
-        <p class="subtle">Use this when deciding whether the blueprint is ready to ship.</p>
-        <ul>
-          <li><strong>Readiness checklist (EN)</strong> — <code>docs/en/release-readiness-checklist.md</code></li>
-          <li><strong>Readiness checklist (DE)</strong> — <code>docs/de/release-readiness-checklist.md</code></li>
-          <li><strong>Finish-task order</strong> — <code>docs/en/release-finish-task-order.md</code></li>
-          <li><strong>Final manual review</strong> — <code>docs/en/final-manual-release-review.md</code></li>
-          <li><strong>Machine-readable state</strong> — <code>data/release-readiness-checklist.json</code></li>
-        </ul>
-      </article>
-
-      <article class="card half">
-        <div class="kicker">Machine-readable evidence model</div>
-        <h2>Evidence files</h2>
-        <p class="subtle">Structured artifacts for claim mapping, phase gates, traceability, proof-case state, and release readiness.</p>
-        <ul>
-          <li><strong>Claim map</strong> — <code>data/claim-source-map.json</code></li>
-          <li><strong>Evidence register</strong> — <code>data/evidence-register.json</code></li>
-          <li><strong>Phase gates</strong> — <code>data/phase-gates.json</code></li>
-          <li><strong>Trace-spine model</strong> — <code>data/trace-spine-schema.json</code> / <code>data/trace-spine-example.json</code></li>
-          <li><strong>Proof-case state</strong> — <code>data/proof-case-*.json</code></li>
-          <li><strong>Release state</strong> — <code>data/release-*.json</code></li>
-        </ul>
-      </article>
-
-      <article class="card half">
-        <div class="kicker">Current limits</div>
-        <h2>What still needs caution after release</h2>
-        <ul>
-          <li>the strongest current proof remains bounded, not broad</li>
-          <li>the measurement posture is same-snapshot, not longitudinal</li>
-          <li>parts of the strongest raw evidence remain private/internal</li>
-          <li>future improvements should extend evidence depth, not broaden claims prematurely</li>
-        </ul>
-        <div class="divider"></div>
-        <p class="subtle"><strong>Current decision:</strong> bounded public release is now defensible; further polish is optional iteration.</p>
-      </article>
+        <figcaption><strong>Figure 1.</strong> Public-facing architecture of the bounded blueprint. The core idea is not full autonomy, but a governed learning loop in which every stronger claim must pass through review, explicit change selection, and later measurement [1][2][3][5].</figcaption>
+      </figure>
     </section>
 
-    <p class="footer-note">No public push has been made yet. This landing page is intentionally a reader-facing guide to the repository and is now ready for a conservative public release if you choose to publish it.</p>
+    <section class="figure-card">
+      <div class="kicker">Figure 2</div>
+      <h2>Lifecycle from claim to evidence</h2>
+      <figure>
+        <div class="figure">
+          <svg viewBox="0 0 1100 260" width="100%" role="img" aria-label="Lifecycle showing claim discipline from hypothesis to bounded public statement.">
+            <defs>
+              <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#0f172a"></path>
+              </marker>
+            </defs>
+            <line x1="90" y1="130" x2="1010" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow2)"/>
+            <g>
+              <circle cx="130" cy="130" r="34" fill="#dbeafe" stroke="#2563eb"/>
+              <text x="130" y="136" text-anchor="middle" font-size="14" font-weight="700">Observe</text>
+              <text x="130" y="182" text-anchor="middle" font-size="12" fill="#475569">internal artifact</text>
+            </g>
+            <g>
+              <circle cx="320" cy="130" r="34" fill="#dcfce7" stroke="#16a34a"/>
+              <text x="320" y="136" text-anchor="middle" font-size="14" font-weight="700">Interpret</text>
+              <text x="320" y="182" text-anchor="middle" font-size="12" fill="#475569">bounded inference</text>
+            </g>
+            <g>
+              <circle cx="510" cy="130" r="34" fill="#fef3c7" stroke="#d97706"/>
+              <text x="510" y="136" text-anchor="middle" font-size="14" font-weight="700">Decide</text>
+              <text x="510" y="182" text-anchor="middle" font-size="12" fill="#475569">governance choice</text>
+            </g>
+            <g>
+              <circle cx="700" cy="130" r="34" fill="#ede9fe" stroke="#7c3aed"/>
+              <text x="700" y="136" text-anchor="middle" font-size="14" font-weight="700">Measure</text>
+              <text x="700" y="182" text-anchor="middle" font-size="12" fill="#475569">effect + caveats</text>
+            </g>
+            <g>
+              <circle cx="890" cy="130" r="34" fill="#ffe4e6" stroke="#e11d48"/>
+              <text x="890" y="136" text-anchor="middle" font-size="14" font-weight="700">Publish</text>
+              <text x="890" y="182" text-anchor="middle" font-size="12" fill="#475569">bounded statement</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><strong>Figure 2.</strong> Lifecycle used by this blueprint to separate observation, inference, design decision, and measured effect. This structure is designed to reduce the common failure mode in agent discourse where ambition reads like present fact [1][4].</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="kicker">Evidence model</div>
+      <h2>Claims, evidence, and what remains uncertain</h2>
+      <div class="grid">
+        <div class="span-8">
+          <table>
+            <thead>
+              <tr><th>Claim area</th><th>Current public stance</th><th>Evidence status</th><th>Main support</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bounded autonomy</td><td>Supported as a governance posture, not as a claim of full autonomy</td><td>Supported</td><td>NIST AI RMF, NIST GenAI Profile, EU AI Act [1][2][3]</td></tr>
+              <tr><td>Agent evaluation</td><td>Should be multi-dimensional and benchmark-aware</td><td>Supported</td><td>HELM, AgentBench, GAIA, SWE-bench [4][6][7][8]</td></tr>
+              <tr><td>Current maturity</td><td>Approximately Phase 1.5 with partial movement toward adoption-candidate behavior</td><td>Partially supported</td><td>Internal observations plus bounded interpretation; not yet externally benchmarked one-to-one</td></tr>
+              <tr><td>Closed-loop self-improvement</td><td>Not yet defensible as stable fact</td><td>Not supported</td><td>Bounded proof only; no repeated longitudinal evidence yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="span-4 card">
+          <h3>Why this matters</h3>
+          <p class="small">A scientific blueprint should make it easy to see what is already inspectable, what is still interpretive, and what would require more evidence before stronger public claims become justified.</p>
+          <div class="note" style="margin-top:12px;">
+            <strong>Quality rule:</strong> public claims should map to a source trail, evidence class, support status, and caveat set [1][4].
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="governance">
+      <div class="kicker">Scientific communication standard</div>
+      <h2>Minimum scientific and public-trust standard</h2>
+      <div class="grid">
+        <div class="span-6 card">
+          <h3>Method requirements</h3>
+          <ul>
+            <li>Separate observation, inference, design decision, and hypothesis.</li>
+            <li>Cite external governance/evaluation sources for generalizable claims.</li>
+            <li>Expose limitations rather than burying them in prose.</li>
+            <li>Use diagrams and tables to reduce ambiguity in public interpretation.</li>
+          </ul>
+        </div>
+        <div class="span-6 card">
+          <h3>Source-quality rule</h3>
+          <ul>
+            <li>Prefer institutional or peer-reviewed sources for governance and evaluation framing.</li>
+            <li>Use numbered inline citations and a dedicated references page.</li>
+            <li>Keep internal evidence distinct from external literature.</li>
+            <li>Do not let private evidence masquerade as broadly auditable proof.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note risk" style="margin-top:18px;">
+        <strong>Non-goal:</strong> this site is not trying to prove broad autonomous self-improvement. Its job is to communicate a bounded, challengeable operating model with visible evidence limits.
+      </div>
+    </section>
+
+    <section class="section" id="references">
+      <div class="kicker">References</div>
+      <h2>Current reference base</h2>
+      <p class="muted">The sources below support governance, methodology, and evaluation language on this page. For the fuller reference list, see <a href="../docs/en/references.md">en/references.md</a> and <a href="../docs/de/referenzen.md">de/referenzen.md</a>.</p>
+      <ol class="ref-list">
+        <li>[1] NIST AI RMF 1.0, 2023. <a href="https://doi.org/10.6028/NIST.AI.100-1">doi.org/10.6028/NIST.AI.100-1</a></li>
+        <li>[2] NIST Generative AI Profile, 2024. <a href="https://doi.org/10.6028/NIST.AI.600-1">doi.org/10.6028/NIST.AI.600-1</a></li>
+        <li>[3] EU AI Act, Regulation (EU) 2024/1689. <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">eur-lex.europa.eu/eli/reg/2024/1689/oj</a></li>
+        <li>[4] Liang et al., <em>Holistic Evaluation of Language Models</em>, TMLR 2023. <a href="https://openreview.net/forum?id=iO4LZibEqW">openreview.net/forum?id=iO4LZibEqW</a></li>
+        <li>[5] Yao et al., <em>ReAct</em>, ICLR 2023. <a href="https://openreview.net/forum?id=WE_vluYUL-X">openreview.net/forum?id=WE_vluYUL-X</a></li>
+        <li>[6] Liu et al., <em>AgentBench</em>, 2023. <a href="https://arxiv.org/abs/2308.03688">arxiv.org/abs/2308.03688</a></li>
+        <li>[7] Mialon et al., <em>GAIA</em>, 2023. <a href="https://arxiv.org/abs/2311.12983">arxiv.org/abs/2311.12983</a></li>
+        <li>[8] Jimenez et al., <em>SWE-bench</em>, ICLR 2024. <a href="https://openreview.net/forum?id=VTF8yNQM66">openreview.net/forum?id=VTF8yNQM66</a></li>
+      </ol>
+    </section>
+
+    <p class="footer">Public-facing communication should remain narrower than the private evidence graph. This page aims for legibility, bounded claims, and inspectable references rather than maximal rhetoric.</p>
   </main>
 </body>
 </html>

@@ -3,10 +3,25 @@
 Local blueprint for a future public DE/EN release about the maturity of a learning-capable agent system.
 This version is depersonalized, evidence-oriented, and now coherent enough for a conservative public release if desired.
 
+## Abstract
+This repository presents an **evidence-first blueprint** for reasoning about agent maturity under controlled risk rather than full autonomy. The core public claim is deliberately narrow: the current system posture is best read as a bounded, human-supervised learning setup with partial feedback closure, not as a proven self-improving autonomous system. The evaluation and governance framing in this repo is aligned with established work on AI risk management, human oversight, and multi-dimensional model/agent evaluation [1][2][3][4].
+
 ## Status
 - **Current posture:** bounded public-release candidate, still unpublished
 - **Current claim posture:** bounded, evidence-first, non-longitudinal
 - **Best use right now:** review the narrative, inspect the evidence model, or publish the bounded blueprint with its current conservative framing
+
+## Scientific basis and claim discipline
+This blueprint distinguishes:
+- **internal observation** from **external citation**
+- **inference** from **design decision**
+- **bounded evidence** from **broader aspiration**
+
+The public methodology is informed by:
+- NIST AI RMF and the NIST Generative AI Profile for governance, monitoring, and documentation [1][2]
+- EU AI Act language for human oversight and bounded autonomy [3]
+- HELM for multi-dimensional evaluation design [4]
+- ReAct and agent benchmarks such as AgentBench, GAIA, and SWE-bench for agent loop and task-evaluation framing [5][6][7][8]
 
 ## Start with the right path
 
@@ -45,6 +60,14 @@ Use this if you are deciding whether the blueprint is publishable:
 - **not yet longitudinal**
 - **publishable bounded blueprint, still intentionally conservative**
 
+## Visual story and website structure
+The companion website is being shaped around a scientific/public-communication structure:
+1. **Problem framing** — why bounded autonomy matters
+2. **System model** — architecture and lifecycle diagrams
+3. **Evidence posture** — what is observed, inferred, or still open
+4. **Claims and limitations** — explicitly bounded conclusions
+5. **References** — numbered, inspectable sources
+
 ## What this repository contains
 
 ### Reader-facing narrative
@@ -62,6 +85,14 @@ Structured files for:
 ### Release-decision material
 Documents and JSON artifacts that track readiness, remaining polish work, and the current publish-now verdict.
 
+## Recommended figures and tables
+The repo/website should emphasize a small number of high-value explanatory artifacts:
+- one **architecture diagram**
+- one **feedback/lifecycle diagram**
+- one **claim/evidence table**
+- one **component table** (function, inputs, outputs, failure modes)
+- one **limitations/non-goals table**
+
 ## Main unresolved questions
 1. What exactly is the public object being classified: system, deployment, workflow, or loop?
 2. What operational test supports the current phase assignment?
@@ -74,12 +105,18 @@ Documents and JSON artifacts that track readiness, remaining polish work, and th
 - the current measurement is **same-snapshot**, not longitudinal
 - parts of the strongest raw evidence remain private/internal
 - presentation is now coherent enough for bounded public release, even if future polish remains possible
+- stronger scientific claims would require a denser public evidence layer and more direct external citation across all key pages
+
+## References
+- `docs/en/references.md`
+- `docs/de/referenzen.md`
 
 ## Repository map
 - `docs/de/` — German narrative pages
 - `docs/en/` — English narrative pages
 - `data/` — claim/evidence/phase/proof-case JSON artifacts
 - `site/` — local landing page and static presentation layer
+- `docs/index.html` — GitHub Pages website entrypoint
 - `assets/` — diagrams and figures
 
 ## Release readiness
@@ -93,3 +130,13 @@ Related artifacts:
 
 ## Current status
 Local repo state only. No public push has been made yet.
+
+## References (inline citations)
+[1] NIST AI RMF 1.0, 2023. https://doi.org/10.6028/NIST.AI.100-1  
+[2] NIST Generative AI Profile, 2024. https://doi.org/10.6028/NIST.AI.600-1  
+[3] EU AI Act, Regulation (EU) 2024/1689. https://eur-lex.europa.eu/eli/reg/2024/1689/oj  
+[4] Liang et al., *Holistic Evaluation of Language Models*, TMLR 2023. https://openreview.net/forum?id=iO4LZibEqW  
+[5] Yao et al., *ReAct*, ICLR 2023. https://openreview.net/forum?id=WE_vluYUL-X  
+[6] Liu et al., *AgentBench*, 2023. https://arxiv.org/abs/2308.03688  
+[7] Mialon et al., *GAIA*, 2023. https://arxiv.org/abs/2311.12983  
+[8] Jimenez et al., *SWE-bench*, ICLR 2024. https://openreview.net/forum?id=VTF8yNQM66

@@ -14,6 +14,8 @@ Strong public statements should never appear without three things:
 2. evidence class
 3. source trail
 
+This follows the spirit of established AI governance and evaluation practice: map the system, measure it, document caveats, and avoid collapsing design intent into evidence [1][2][4].
+
 ## Distinction rules
 ### Observation
 A statement about what is directly present in the current system or artifact set.
@@ -54,3 +56,9 @@ A future closed-loop proof should disclose:
 
 ## Known current limits
 See `measurement-limits.md` for current public evidence limits and observability caveats.
+
+## References
+[1] NIST AI RMF 1.0, 2023. https://doi.org/10.6028/NIST.AI.100-1  
+[2] NIST Generative AI Profile, 2024. https://doi.org/10.6028/NIST.AI.600-1  
+[3] EU AI Act, Regulation (EU) 2024/1689. https://eur-lex.europa.eu/eli/reg/2024/1689/oj  
+[4] Liang et al., *Holistic Evaluation of Language Models*, TMLR 2023. https://openreview.net/forum?id=iO4LZibEqW
