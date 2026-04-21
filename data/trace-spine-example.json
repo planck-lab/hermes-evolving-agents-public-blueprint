@@ -1,0 +1,61 @@
+{
+  "signal": {
+    "signal_id": "sig-2026-04-xx-001",
+    "signal_type": "champion-candidate",
+    "created_at": "2026-04-xxT10:00:00Z",
+    "source_refs": ["internal-roadmap-2026-04-20"],
+    "evidence_class": "E1",
+    "summary": "Example placeholder signal for one-path closed-loop proof.",
+    "qualification_reason": "Placeholder showing the minimum shape of a qualifying signal.",
+    "status": "qualified"
+  },
+  "review": {
+    "review_id": "rev-2026-04-xx-001",
+    "signal_id": "sig-2026-04-xx-001",
+    "reviewed_at": "2026-04-xxT12:00:00Z",
+    "reviewer": "human-reviewer",
+    "decision": "approved",
+    "alternatives_considered": ["park", "reject"],
+    "rationale": "Approved as a narrow, reversible test case.",
+    "status": "approved"
+  },
+  "adoption": {
+    "adoption_id": "adp-2026-04-xx-001",
+    "review_id": "rev-2026-04-xx-001",
+    "adoption_target": "routing-preference",
+    "adoption_kind": "recommendation-first",
+    "approved_at": "2026-04-xxT12:30:00Z",
+    "approved_by": "human-reviewer",
+    "expected_effect": "Small bounded runtime behavior change.",
+    "rollback_plan": "Revert routing preference to previous state.",
+    "status": "approved"
+  },
+  "change": {
+    "change_id": "chg-2026-04-xx-001",
+    "adoption_id": "adp-2026-04-xx-001",
+    "activated_at": "2026-04-xxT13:00:00Z",
+    "change_surface": "runtime-routing",
+    "change_ref": "change-placeholder-ref",
+    "reversible": true,
+    "rollback_ref": "rollback-placeholder-ref",
+    "status": "active"
+  },
+  "measurement": {
+    "measurement_id": "mea-2026-04-xx-001",
+    "change_id": "chg-2026-04-xx-001",
+    "window_start": "2026-04-xxT13:00:00Z",
+    "window_end": "2026-04-xxT20:00:00Z",
+    "metric_name": "quality-delta-placeholder",
+    "measurement_method": "bounded pre/post observation",
+    "observed_effect": "No result yet; placeholder only.",
+    "confidence_posture": "pending",
+    "confounders": ["background drift", "sample sparsity"],
+    "status": "planned"
+  },
+  "final_verdict": {
+    "claim_status": "open",
+    "confidence_posture": "low",
+    "limitations": ["template only", "not a real proof case yet"],
+    "follow_up_needed": true
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1",
+  "description": "Canonical learning object / trace spine for one narrow closed-loop proof path.",
+  "objects": {
+    "signal": {
+      "id_field": "signal_id",
+      "required_fields": [
+        "signal_id",
+        "signal_type",
+        "created_at",
+        "source_refs",
+        "evidence_class",
+        "summary",
+        "qualification_reason",
+        "status"
+      ],
+      "status_values": ["detected", "qualified", "routed", "rejected", "parked"]
+    },
+    "review": {
+      "id_field": "review_id",
+      "required_fields": [
+        "review_id",
+        "signal_id",
+        "reviewed_at",
+        "reviewer",
+        "decision",
+        "alternatives_considered",
+        "rationale",
+        "status"
+      ],
+      "status_values": ["opened", "in_review", "approved", "rejected", "deferred"]
+    },
+    "adoption": {
+      "id_field": "adoption_id",
+      "required_fields": [
+        "adoption_id",
+        "review_id",
+        "adoption_target",
+        "adoption_kind",
+        "approved_at",
+        "approved_by",
+        "expected_effect",
+        "rollback_plan",
+        "status"
+      ],
+      "status_values": ["proposed", "approved", "implemented", "rolled_back", "parked"]
+    },
+    "change": {
+      "id_field": "change_id",
+      "required_fields": [
+        "change_id",
+        "adoption_id",
+        "activated_at",
+        "change_surface",
+        "change_ref",
+        "reversible",
+        "rollback_ref",
+        "status"
+      ],
+      "status_values": ["prepared", "active", "reverted", "superseded"]
+    },
+    "measurement": {
+      "id_field": "measurement_id",
+      "required_fields": [
+        "measurement_id",
+        "change_id",
+        "window_start",
+        "window_end",
+        "metric_name",
+        "measurement_method",
+        "observed_effect",
+        "confidence_posture",
+        "confounders",
+        "status"
+      ],
+      "status_values": ["planned", "collecting", "evaluated", "inconclusive"]
+    }
+  },
+  "link_rules": [
+    "Each review must reference exactly one signal_id.",
+    "Each adoption must reference exactly one approved review_id.",
+    "Each change must reference exactly one adoption_id.",
+    "Each measurement must reference exactly one change_id.",
+    "A proof-grade chain is signal -> review -> adoption -> change -> measurement."
+  ],
+  "proof_requirements": [
+    "The chain must be end-to-end linked by IDs.",
+    "At least one runtime-affecting reversible change must exist.",
+    "Measurement must disclose uncertainty and confounders.",
+    "A final verdict must mark claim_status and confidence_posture."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "verdict_id": "verdict-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "title": "Final bounded verdict for research instrumentation proof case",
+  "status": "bounded-final-verdict",
+  "summary": "This proof case now supports one bounded conclusion: the recovered research/null-task_type alert is better explained and handled as an instrumentation-first case than as a defensible skill regression. The case is no longer an empty scaffold, but it still falls short of a strong closed-loop proof because repeated downstream evidence is missing.",
+  "one_line_takeaway": "Bounded proof achieved: live evidence supports instrumentation-first suppression of a thin-evidence regression candidate, not a strong claim of durable closed-loop improvement.",
+  "core_claim": {
+    "claim_status": "supported-with-bounds",
+    "statement": "For this proof case, the selected segmentation/outcome-consistency gate is active on the live system and suppresses the reconstructed thin-evidence research/null-task_type candidate, supporting an instrumentation-first interpretation over a direct skill-regression reading.",
+    "confidence_posture": "medium-low"
+  },
+  "what_is_supported": [
+    "The trigger case is real enough to analyze but epistemically weak as a raw skill-regression claim.",
+    "A concrete conservative intervention was selected and tied to live code plus grounded git references.",
+    "A bounded live measurement shows the ungated counterfactual candidate still exists while the gated path suppresses it.",
+    "The current best reading is measurement-artifact leaning / instrumentation-first."
+  ],
+  "what_is_not_supported": [
+    "A strong claim that the research skill truly regressed.",
+    "A broad claim of durable downstream review-quality improvement.",
+    "A full end-to-end closed-loop proof with repeated post-change evidence.",
+    "A justification for routing-default mutation or skill demotion from this case alone."
+  ],
+  "trace_spine_completion": {
+    "signal": "partial",
+    "review": "ready",
+    "adoption": "ready",
+    "change": "ready (retrospectively logged)",
+    "measurement": "partial"
+  },
+  "final_case_reading": "measurement-artifact-leaning",
+  "publication_posture": {
+    "public_safe_summary": "One bounded proof case now exists for the claim that conservative signal gating can prevent thin-evidence escalation. It should be presented as a narrow operational result, not as proof of durable self-improvement.",
+    "oversell_guardrail": "Do not describe this case as a strong closed-loop proof or as evidence of broad autonomous improvement.",
+    "recommended_language": [
+      "bounded proof partially complete",
+      "instrumentation-first reading",
+      "counterfactual same-snapshot comparison",
+      "not yet longitudinal"
+    ]
+  },
+  "remaining_gaps": [
+    "Repeated observation window for downstream review-quality effects.",
+    "Broader post-change evidence beyond one bounded live check.",
+    "Historical provenance repair for legacy rows if stronger causal claims are needed."
+  ],
+  "next_options": [
+    {
+      "option": "stop here for public blueprint purposes",
+      "when_to_choose": "if the goal is one honest bounded proof case rather than a stronger causal demonstration"
+    },
+    {
+      "option": "run repeated candidate-emission checks over time",
+      "when_to_choose": "if stronger confidence about downstream operational effect is needed"
+    },
+    {
+      "option": "build a cleaner future worked example from a fresh signal onward",
+      "when_to_choose": "if the goal is a more publication-friendly end-to-end closed-loop example"
+    }
+  ],
+  "source_refs": [
+    "data/proof-case-intervention-selection.json",
+    "data/proof-case-change-record.json",
+    "data/proof-case-measurement-spec.json",
+    "data/proof-case-readiness-check.json"
+  ]
+}

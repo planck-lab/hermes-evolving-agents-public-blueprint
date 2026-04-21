@@ -1,0 +1,138 @@
+{
+  "selection_id": "sel-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "title": "Intervention selection for research instrumentation proof case",
+  "status": "selected",
+  "summary": "The chosen intervention is a conservative pre-judgment gate at the signal-selection layer: do not emit or treat a regression candidate as skill evidence when task segmentation is missing or the outcome-definition signal is internally inconsistent.",
+  "decision_question": "Which single reversible intervention should be used first for this proof case?",
+  "selection_criteria": [
+    "smallest reversible change",
+    "reduces false regression claims immediately",
+    "does not mutate routing defaults or demote a skill",
+    "has a clear rollback path",
+    "is already grounded in recovered evidence"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "opt-a",
+      "name": "Selection-layer gate before regression judgment",
+      "statement": "Suppress regression/champion-style skill judgment when task_type is missing or outcome-definition inconsistency is detected.",
+      "scope": "signal selection / draft generation",
+      "reversibility": "high",
+      "strengths": [
+        "smallest user-visible safety improvement",
+        "prevents thin-evidence demotion",
+        "fits the recovered problem directly"
+      ],
+      "weaknesses": [
+        "does not repair historical rows",
+        "does not by itself explain legacy partial writer"
+      ],
+      "decision": "selected"
+    },
+    {
+      "candidate_id": "opt-b",
+      "name": "Redefine aggregate success semantics",
+      "statement": "Change success-rate aggregation so partial outcomes no longer collapse to 0% success.",
+      "scope": "metric semantics",
+      "reversibility": "medium",
+      "strengths": [
+        "addresses the visible 0% signal directly"
+      ],
+      "weaknesses": [
+        "semantically riskier",
+        "can break comparability with historical aggregates",
+        "still leaves missing task segmentation unresolved"
+      ],
+      "decision": "not-selected"
+    },
+    {
+      "candidate_id": "opt-c",
+      "name": "Backfill historical task_type/session linkage",
+      "statement": "Repair old rows first by reconstructing missing task_type and session_id values before judging skill quality.",
+      "scope": "historical data repair",
+      "reversibility": "low",
+      "strengths": [
+        "could strengthen provenance materially"
+      ],
+      "weaknesses": [
+        "larger scope",
+        "higher epistemic risk if reconstruction guesses",
+        "slower than needed for a first proof-case intervention"
+      ],
+      "decision": "not-selected"
+    },
+    {
+      "candidate_id": "opt-d",
+      "name": "Change runtime outcome taxonomy first",
+      "statement": "Reintroduce or formalize partial at finalize time before any selection logic changes.",
+      "scope": "runtime artifact writing",
+      "reversibility": "medium",
+      "strengths": [
+        "could eventually resolve outcome semantics at the source"
+      ],
+      "weaknesses": [
+        "touches broader runtime behavior",
+        "not necessary for the first bounded intervention",
+        "historical proof gap remains even after implementation"
+      ],
+      "decision": "not-selected"
+    }
+  ],
+  "selected_intervention": {
+    "intervention_id": "int-2026-04-phase2a-001",
+    "name": "Segmentation and outcome-consistency gate before regression judgment",
+    "statement": "Before emitting or acting on a skill-level regression candidate, require non-empty task_type segmentation and block the candidate when success_rate and quality coverage indicate an outcome-definition inconsistency.",
+    "why_selected": [
+      "It is the narrowest change that directly addresses the recovered evidence chain.",
+      "It reduces false-positive regression handling without changing runtime defaults.",
+      "It is easy to roll back and auditable at one clear layer."
+    ],
+    "non_goals": [
+      "Do not redefine historical success semantics yet.",
+      "Do not demote the research skill.",
+      "Do not change routing defaults or champion selection globally beyond the gate."
+    ],
+    "change_surface": [
+      "internal/hermes-agent/scripts/skill_signal_gates.py",
+      "internal/hermes-agent/scripts/generate_regression_draft_from_db.py"
+    ],
+    "implementation_mode": "selection-layer guard before regression draft emission",
+    "rollback_mechanism": {
+      "strategy": "Remove or revert the selection-gate invocation and restore prior draft-emission behavior.",
+      "refs": [
+        "internal/hermes-agent/scripts/skill_signal_gates.py",
+        "internal/hermes-agent/scripts/generate_regression_draft_from_db.py"
+      ],
+      "done_when": [
+        "regression draft generation no longer blocks on missing task_type",
+        "outcome-definition gate message no longer suppresses candidate creation"
+      ]
+    },
+    "approval": {
+      "selection_spec_approved_by": "project owner",
+      "selection_spec_approved_at": "2026-04-21",
+      "selection_scope": "Choose the proof-case intervention and record its rationale.",
+      "runtime_change_execution": "not executed in this step"
+    },
+    "implementation_state": {
+      "proof_case_status": "selected but not logged as a dedicated proof-case change",
+      "note": "The live codebase already contains an analogous conservative gate shape, but this proof case still lacks a dedicated change record, activation timestamp, and bounded post-change measurement."
+    },
+    "expected_effect": [
+      "null-segmented rows no longer escalate into skill-regression handling",
+      "outcome-definition mismatch is treated as instrumentation-first",
+      "Step 4 can focus on explicit change logging instead of scope debate"
+    ],
+    "evidence_basis": [
+      "Recovered raw rows all have task_type = null and session_id = null.",
+      "0% success is caused by counting only outcome = success while all five rows are partial.",
+      "Live gate logic already expresses the conservative decision boundary needed for this case."
+    ],
+    "follow_on_after_selection": [
+      "Create one explicit proof-case change artifact with activation time and owner.",
+      "Define the bounded measurement window for post-change observations.",
+      "Document outcome semantics separately without changing aggregate history yet."
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "recovery_id": "outcome-recovery-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "status": "partial-recovery",
+  "technical_findings": {
+    "aggregate_definition": {
+      "source_file": "internal/hermes-agent/scripts/generate_regression_draft_from_db.py",
+      "logic": "success_rate is computed as SUM(CASE WHEN outcome = 'success' THEN 1 ELSE 0 END) / COUNT(*)",
+      "implication": "Rows with outcome='partial' contribute 0 to success_rate."
+    },
+    "current_finalize_logic": {
+      "source_file": "internal/hermes-agent/hermes_state.py",
+      "logic": "_infer_outcome() currently returns only 'success' or 'failure' based on end_reason markers; blank or non-error reasons map to 'success'.",
+      "implication": "The current centralized finalize path does not itself explain historical 'partial' rows."
+    },
+    "historical_rows": {
+      "source": "internal/hermes-state.db",
+      "row_count": 5,
+      "shared_pattern": {
+        "skill_name": "research",
+        "task_type": null,
+        "quality_score": 0.5,
+        "outcome": "partial",
+        "agent_role": "builder",
+        "notes": "Auto-tracked dispatch",
+        "session_id": null
+      }
+    },
+    "gate_logic": {
+      "source_file": "internal/hermes-agent/scripts/skill_signal_gates.py",
+      "logic": [
+        "Missing task_type triggers a segmentation gate before skill judgment.",
+        "Very low success_rate with still-medium avg_quality triggers an outcome-definition inconsistency gate."
+      ]
+    }
+  },
+  "reconstructed_explanation": {
+    "why_success_is_0": "Because the aggregate counts only outcome='success', and all five recovered rows are outcome='partial'.",
+    "why_the_case_is_still_not_a_hard_regression": [
+      "All rows have task_type = null, so segmentation is missing.",
+      "All rows have session_id = null, so task/session provenance is missing.",
+      "The current code path explains how success_rate is computed, but not which historical writer created 'partial' for these rows."
+    ],
+    "most_likely_operational_reading": "The 0% success signal is technically real as an aggregate, but epistemically weak as a regression claim because outcome semantics and provenance are underspecified."
+  },
+  "minimum_intervention_now_supported": {
+    "name": "Outcome-definition and segmentation gate before skill judgment",
+    "scope": [
+      "record task_type consistently before evaluating skill-level regression/champion signals",
+      "document or tighten how outcome maps to success vs partial vs failure",
+      "avoid skill demotion or routing/default shifts until those two conditions are met"
+    ],
+    "not_supported_yet": [
+      "a direct skill-level regression claim against research",
+      "a routing/default change based on the recovered signal alone"
+    ]
+  }
+}

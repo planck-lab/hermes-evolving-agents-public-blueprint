@@ -1,0 +1,102 @@
+{
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "title": "Regression or instrumentation review case for skill research",
+  "goal": "Use one narrow instrumentation/regression candidate to scaffold a real Phase-2A proof path without overstating evidence.",
+  "selection_rationale": {
+    "why_this_case": [
+      "Lower-risk than a routing-default or champion-promotion case.",
+      "Targets a concrete reviewable object: skill research with missing task_type classification and apparent 0% success rate.",
+      "Improves trigger quality and measurement discipline even if no adoption follows."
+    ],
+    "source_refs": [
+      "internal-roadmap-2026-04-20",
+      "truth-alignment-2026-04-12"
+    ],
+    "supporting_notes": [
+      "private/planck-vault/Projekte/evolving-agents/2026-04-12-auswahl-naechster-realfall-fuer-m3.md",
+      "private/planck-vault/Research/2026-04-12-signal-router-taxonomy-mapping.md"
+    ]
+  },
+  "trace_spine": {
+    "signal": {
+      "signal_id": "sig-2026-04-phase2a-001",
+      "signal_type": "regression-candidate",
+      "created_at": "open",
+      "source_refs": ["truth-alignment-2026-04-12"],
+      "evidence_class": "E1",
+      "summary": "Skill research appears as a regression/instrumentation candidate due to missing task_type classification and apparent 0% success rate.",
+      "qualification_reason": "Selected as the best next real review case because it is diagnostic, reversible, and directly relevant to trigger quality.",
+      "status": "qualified",
+      "open_fields": ["created_at exact timestamp", "raw metric snapshot ref", "session/query provenance"]
+    },
+    "review": {
+      "review_id": "rev-2026-04-phase2a-001",
+      "signal_id": "sig-2026-04-phase2a-001",
+      "reviewed_at": "open",
+      "reviewer": "pending",
+      "decision": "open",
+      "alternatives_considered": ["park", "reject as low confidence", "reclassify as measurement-artifact only"],
+      "rationale": "The review should test whether the observed alert reflects a true regression or mostly an instrumentation/segmentation problem.",
+      "status": "opened",
+      "open_fields": ["review owner", "decision date", "review artifact location"]
+    },
+    "adoption": {
+      "adoption_id": "adp-2026-04-phase2a-001",
+      "review_id": "rev-2026-04-phase2a-001",
+      "adoption_target": "measurement-and-segmentation",
+      "adoption_kind": "diagnostic-fix-first",
+      "approved_at": "open",
+      "approved_by": "pending",
+      "expected_effect": "Cleaner classification of research outcomes and better distinction between genuine regression and measurement artifact.",
+      "rollback_plan": "Revert the measurement/segmentation change if it degrades comparability or introduces new ambiguity.",
+      "status": "proposed",
+      "open_fields": ["exact intervention", "approval owner", "rollback mechanism ref"]
+    },
+    "change": {
+      "change_id": "chg-2026-04-phase2a-001",
+      "adoption_id": "adp-2026-04-phase2a-001",
+      "activated_at": "open",
+      "change_surface": "instrumentation-or-task-segmentation",
+      "change_ref": "open",
+      "reversible": true,
+      "rollback_ref": "open",
+      "status": "prepared",
+      "open_fields": ["implementation path", "activation time", "affected metrics/views"]
+    },
+    "measurement": {
+      "measurement_id": "mea-2026-04-phase2a-001",
+      "change_id": "chg-2026-04-phase2a-001",
+      "window_start": "open",
+      "window_end": "open",
+      "metric_name": "research-quality-or-classification-delta",
+      "measurement_method": "bounded pre/post observation with explicit caveats",
+      "observed_effect": "open",
+      "confidence_posture": "pending",
+      "confounders": ["background drift", "sample sparsity", "changed labeling logic", "different task mix"],
+      "status": "planned",
+      "open_fields": ["window definition", "minimum sample size", "baseline comparator", "disconfirmation rule"]
+    }
+  },
+  "final_verdict": {
+    "claim_status": "open",
+    "confidence_posture": "low",
+    "limitations": [
+      "This is a scaffold, not a completed proof.",
+      "The current candidate may resolve into a measurement artifact rather than a genuine regression."
+    ],
+    "follow_up_needed": true
+  },
+  "missing_data_points": [
+    "raw metric snapshot or dashboard reference for the triggering alert",
+    "exact sessions/tasks underlying the apparent regression",
+    "review owner and review artifact",
+    "precise instrumentation or segmentation change proposal",
+    "pre/post comparison window and minimum evidence threshold"
+  ],
+  "acceptance_criteria": [
+    "All five trace-spine objects are instantiated with non-placeholder owner/time fields.",
+    "One reversible diagnostic change is actually implemented.",
+    "The measurement section states both result and uncertainty.",
+    "The final verdict can say whether the case was a true regression, a measurement artifact, or still inconclusive."
+  ]
+}

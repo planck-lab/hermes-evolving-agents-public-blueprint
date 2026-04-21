@@ -1,0 +1,82 @@
+{
+  "plan_id": "release-finish-plan-2026-04-001",
+  "title": "Execution order for public-release finish tasks",
+  "status": "all-complete",
+  "recommendation": "All planned finish tasks are complete. Publish only with the current bounded claim posture intact.",
+  "tasks": [
+    {
+      "order": 1,
+      "task": "Manual DE/EN consistency pass",
+      "why_first": "This reduced wording drift before visual polish, so later edits stayed smaller and more stable.",
+      "scope": [
+        "the 7 canonical pages only",
+        "headlines, key claims, caution language, and repeated terminology"
+      ],
+      "estimated_effort": "45-75 min",
+      "status": "completed-2026-04-21",
+      "output": "one aligned EN/DE canonical set with fewer wording mismatches",
+      "done_when": [
+        "same core claims appear in EN and DE",
+        "same caution posture appears in EN and DE",
+        "no obvious terminology drift in canonical pages"
+      ]
+    },
+    {
+      "order": 2,
+      "task": "Release-grade polish pass on site + README",
+      "why_second": "Once wording was stable, presentation polish could be applied without being invalidated immediately afterward.",
+      "scope": [
+        "landing page spacing, ordering, and emphasis",
+        "README phrasing and scanability",
+        "small clarity/typography cleanup"
+      ],
+      "estimated_effort": "30-60 min",
+      "status": "completed-2026-04-21",
+      "output": "cleaner first impression and more release-like presentation",
+      "done_when": [
+        "landing page feels intentionally curated",
+        "README scans cleanly top to bottom",
+        "no section feels obviously drafty or redundant"
+      ]
+    },
+    {
+      "order": 3,
+      "task": "Editorial decision on proof-case prominence",
+      "why_third": "After wording and presentation settled, the bounded proof case could stay visible without becoming the main claim.",
+      "scope": [
+        "proof-case-final-verdict placement",
+        "site landing emphasis",
+        "README emphasis level"
+      ],
+      "estimated_effort": "15-30 min",
+      "status": "completed-2026-04-21",
+      "output": "explicit editorial stance on how prominent the bounded proof case should be",
+      "done_when": [
+        "proof-case prominence is an intentional choice, not a residue of build history",
+        "the chosen prominence is consistent across README, index, and site"
+      ]
+    },
+    {
+      "order": 4,
+      "task": "Final manual release review + confirmatory go/no-go check",
+      "why_last": "This confirmed the final publication posture after content, polish, and editorial framing were stable enough to judge.",
+      "scope": [
+        "oversell risk",
+        "public/private evidence boundary language",
+        "coherence of public-safe claims",
+        "go/no-go release decision"
+      ],
+      "estimated_effort": "20-40 min",
+      "status": "completed-2026-04-21",
+      "output": "final release posture: publish now, if desired",
+      "done_when": [
+        "a release decision can be stated clearly with reasons",
+        "remaining gaps are explicitly accepted as optional refinements",
+        "public-facing claim wording is signed off for a bounded release"
+      ]
+    }
+  ],
+  "total_estimated_effort": "110-205 min",
+  "remaining_estimated_effort": "0 min",
+  "stop_rule": "Publish only if the current bounded claim posture and privacy boundary are kept intact."
+}

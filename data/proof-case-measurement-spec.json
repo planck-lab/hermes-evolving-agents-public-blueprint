@@ -1,0 +1,94 @@
+{
+  "measurement_id": "mea-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "change_record_id": "chglog-2026-04-phase2a-001",
+  "title": "Bounded measurement for segmentation and outcome-consistency gate",
+  "status": "initial-bounded-measurement",
+  "measurement_type": "counterfactual-snapshot-comparison",
+  "summary": "A live bounded snapshot shows that the ungated top regression candidate would still be the research/null-task_type case, while the gated live script emits no regression candidate. This supports the claim that the current gate suppresses thin-evidence escalation, but it is still not a longitudinal end-to-end proof.",
+  "baseline_comparator": {
+    "type": "same-snapshot counterfactual (ungated vs gated)",
+    "why_this_baseline": "No preserved pre-gate historical candidate stream exists, so the most honest comparator is the same live state.db snapshot viewed through the ungated SQL ranking and through the gated emission path.",
+    "ungated_snapshot": {
+      "measured_at": "2026-04-21",
+      "window": "last 30 days",
+      "top_candidate": {
+        "skill_name": "research",
+        "task_type": null,
+        "uses": 5,
+        "avg_quality": 0.5,
+        "quality_coverage_pct": 100.0,
+        "success_rate": 0.0,
+        "last_seen": "2026-03-22 15:08:49"
+      },
+      "interpretation": "Without the selection gate, the same thin-evidence research/null-task_type case still ranks as the top regression candidate."
+    },
+    "gated_snapshot": {
+      "measured_at": "2026-04-21",
+      "command": "python3 scripts/generate_regression_draft_from_db.py --json",
+      "exit_code": 1,
+      "observed_output": "No regression candidate found for current filters.",
+      "interpretation": "With the live gate path active, no regression candidate is emitted from the same underlying state."
+    }
+  },
+  "observation_window": {
+    "kind": "single bounded live verification run",
+    "start": "2026-04-21",
+    "end": "2026-04-21",
+    "scope": "current live code against current state.db",
+    "note": "This is a narrow operational check, not a repeated longitudinal window."
+  },
+  "threshold": {
+    "minimum_informative_result": "An ungated counterfactual candidate exists and the gated live path suppresses it for the documented gate reasons.",
+    "why_this_threshold": "This is the smallest threshold that shows the selected intervention is active and behaviorally relevant without overstating downstream impact."
+  },
+  "disconfirmation_rule": {
+    "rule": "The measurement is disconfirmed if the gated live path still emits the research/null-task_type candidate or if the gate reason is unrelated to segmentation/outcome inconsistency.",
+    "stronger_disconfirmation": "A later bounded window showing repeated false-positive regression candidates despite the gate would also weaken the intervention claim."
+  },
+  "live_gate_checks": [
+    {
+      "input": {
+        "task_type": null,
+        "avg_quality": 0.5,
+        "quality_coverage_pct": 100.0,
+        "success_rate": 0.0
+      },
+      "output": "task_type fehlt; zuerst Segmentierung sichern, nicht Skill bewerten"
+    },
+    {
+      "input": {
+        "task_type": "research",
+        "avg_quality": 0.5,
+        "quality_coverage_pct": 100.0,
+        "success_rate": 0.0
+      },
+      "output": "Outcome-Definition wirkt inkonsistent: sehr niedrige Erfolgsrate (0.0%) bei noch mittlerer/hoeherer Avg Quality (0.5)."
+    }
+  ],
+  "observed_effect": {
+    "primary": "The selected case no longer escalates into emitted regression-candidate handling under the live gated path.",
+    "secondary": "The suppression reason matches the proof-case rationale: missing segmentation first, outcome-definition inconsistency second."
+  },
+  "verdict": {
+    "claim_status": "partially-supported",
+    "case_reading": "measurement-artifact-leaning",
+    "confidence_posture": "medium-low",
+    "statement": "The bounded live check supports that the current gate prevents the recovered research/null-task_type case from surfacing as a regression candidate. This is evidence for instrumentation-first handling, but not yet a full closed-loop proof of downstream improvement.",
+    "follow_up_needed": true
+  },
+  "limitations": [
+    "The comparator is counterfactual same-snapshot, not a preserved historical pre/post series.",
+    "There is still no repeated observation window for downstream review-quality effects.",
+    "The result shows suppression of one thin-evidence case, not a broad causal reduction across all future false positives.",
+    "Historical provenance gaps in legacy rows remain unresolved."
+  ],
+  "next_step_after_measurement": {
+    "name": "Finalize proof-case verdict posture and optionally add a repeated observation window",
+    "actions": [
+      "decide whether this bounded measurement is enough for a local proof-case verdict",
+      "if stronger confidence is needed, collect repeated candidate-emission checks over a defined window",
+      "document whether downstream review workload quality measurably changes"
+    ]
+  }
+}

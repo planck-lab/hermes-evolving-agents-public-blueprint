@@ -1,0 +1,56 @@
+{
+  "recovery_id": "recovery-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "status": "partial-recovery",
+  "signal_reconstruction": {
+    "signal_artifact_date": "2026-04-10",
+    "signal_artifact_ref": "private/agent-exchange/signals/macbook/2026-04-10-regression-kandidat-in-aktueller-skill-performance.md",
+    "reconstructed_from": [
+      "signal artifact in agent-exchange/signals",
+      "live query against internal/hermes-state.db",
+      "review artifact and follow-up evaluation notes"
+    ],
+    "recovered_metrics": {
+      "skill_name": "research",
+      "task_type": null,
+      "total_uses": 5,
+      "avg_quality": 0.5,
+      "success_rate": 0.0,
+      "last_used": "2026-03-22 15:08:49"
+    },
+    "recovered_raw_rows": [
+      {"timestamp": "2026-03-22 13:13:34", "agent_role": "builder", "task_type": null, "quality_score": 0.5, "outcome": "partial", "notes": "Auto-tracked dispatch"},
+      {"timestamp": "2026-03-22 13:15:37", "agent_role": "builder", "task_type": null, "quality_score": 0.5, "outcome": "partial", "notes": "Auto-tracked dispatch"},
+      {"timestamp": "2026-03-22 14:17:46", "agent_role": "builder", "task_type": null, "quality_score": 0.5, "outcome": "partial", "notes": "Auto-tracked dispatch"},
+      {"timestamp": "2026-03-22 14:17:46", "agent_role": "builder", "task_type": null, "quality_score": 0.5, "outcome": "partial", "notes": "Auto-tracked dispatch"},
+      {"timestamp": "2026-03-22 15:08:49", "agent_role": "builder", "task_type": null, "quality_score": 0.5, "outcome": "partial", "notes": "Auto-tracked dispatch"}
+    ],
+    "sql_refs": {
+      "aggregate_query": "SELECT skill_name, total_uses, avg_quality, success_rate, last_used FROM skill_metrics WHERE skill_name='research';",
+      "raw_rows_query": "SELECT timestamp, session_id, agent_role, skill_name, task_type, quality_score, outcome, notes FROM skill_performance WHERE skill_name='research' ORDER BY timestamp DESC;"
+    }
+  },
+  "provenance_assessment": {
+    "available": [
+      "signal artifact exists",
+      "aggregate and raw skill_performance evidence can be reconstructed live from state.db",
+      "review and response chain exists"
+    ],
+    "missing": [
+      "session_id linkage for all five raw rows",
+      "direct task-level provenance behind the five rows",
+      "explicit documented success-definition source at signal time"
+    ],
+    "important_findings": [
+      "All five rows have session_id = null.",
+      "All five rows have outcome = partial, not success.",
+      "The public signal's 0% success rate is consistent with the aggregate, but the deeper issue is that outcome semantics and quality semantics are not aligned enough for a hard regression reading."
+    ]
+  },
+  "step1_readiness_after_recovery": "partial-but-stronger",
+  "smallest_next_move": [
+    "identify where the success/outcome definition was encoded when these rows were written",
+    "check whether any neighboring artifacts can restore task-level provenance",
+    "only then choose a single minimal instrumentation intervention"
+  ]
+}

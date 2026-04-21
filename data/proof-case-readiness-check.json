@@ -1,0 +1,107 @@
+{
+  "readiness_check_id": "readiness-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "overall_status": "bounded-proof-partially-complete",
+  "summary": "The case now has a compact final bounded verdict: instrumentation-first is supported, while strong closed-loop or durable-improvement claims remain unsupported.",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Capture trigger evidence",
+      "status": "partial",
+      "available_inputs": [
+        "review request contains alert metrics (task_type null, Uses 5, Avg Quality 0.500, Success Rate 0%, Last Seen 2026-03-22 15:08:49)",
+        "real-case vault note summarizes the same signal",
+        "supporting rationale exists in selection note"
+      ],
+      "missing_inputs": [
+        "raw dashboard or database snapshot reference",
+        "exact underlying sessions/tasks provenance",
+        "explicit current success/quality definition source"
+      ],
+      "evidence_refs": [
+        "private/agent-exchange/reviews/mini/2026-04-12-research-instrumentation-review.md",
+        "private/planck-vault/Projekte/evolving-agents/2026-04-12-realfall-review-research-instrumentation.md"
+      ]
+    },
+    {
+      "step": 2,
+      "name": "Run review and classify the case",
+      "status": "ready",
+      "available_inputs": [
+        "review artifact exists",
+        "response artifact exists",
+        "post-review evaluation exists",
+        "classification already resolved to instrumentation-focused Fall C"
+      ],
+      "missing_inputs": [
+        "formal mapping of reviewer identity into the proof-case object"
+      ],
+      "evidence_refs": [
+        "private/agent-exchange/reviews/mini/2026-04-12-research-instrumentation-review.md",
+        "private/agent-exchange/responses/macbook/2026-04-16-re-research-instrumentation-review.md",
+        "private/planck-vault/Projekte/evolving-agents/2026-04-19-post-review-response-eval-research-instrumentation.md"
+      ]
+    },
+    {
+      "step": 3,
+      "name": "Define one minimal reversible intervention",
+      "status": "ready",
+      "available_inputs": [
+        "candidate intervention direction is clear: task_type/outcome-consistency gate before regression judgment",
+        "single intervention statement is now selected",
+        "approval owner is known",
+        "rollback refs are known"
+      ],
+      "missing_inputs": [],
+      "evidence_refs": [
+        "private/agent-exchange/responses/macbook/2026-04-16-re-research-instrumentation-review.md",
+        "private/planck-vault/Projekte/evolving-agents/2026-04-12-post-review-decision-schema-research-instrumentation.md",
+        "data/proof-case-intervention-selection.json"
+      ]
+    },
+    {
+      "step": 4,
+      "name": "Implement and log the runtime change",
+      "status": "ready",
+      "available_inputs": [
+        "canonical implementation/change surface is known: skill_signal_gates.py + generate_regression_draft_from_db.py",
+        "retrospective change record is now explicit",
+        "activation commit/time is grounded in git history",
+        "affected metrics/views are named",
+        "rollback reference is named"
+      ],
+      "missing_inputs": [],
+      "evidence_refs": [
+        "data/proof-case-change-record.json"
+      ]
+    },
+    {
+      "step": 5,
+      "name": "Measure bounded post-change effect",
+      "status": "partial",
+      "available_inputs": [
+        "baseline comparator is defined as same-snapshot ungated vs gated comparison",
+        "observation window is defined and executed as one bounded live verification run",
+        "minimum threshold and disconfirmation rule are explicit",
+        "initial bounded observations exist",
+        "initial verdict posture is recorded"
+      ],
+      "missing_inputs": [
+        "repeated observation window or broader downstream evidence",
+        "stronger post-change evidence for sustained review-quality improvement"
+      ],
+      "evidence_refs": [
+        "data/proof-case-execution-plan.json",
+        "data/proof-case-measurement-spec.json"
+      ]
+    }
+  ],
+  "smallest_executable_next_start": {
+    "step": 5,
+    "actions": [
+      "decide whether the bounded measurement is enough for the local proof-case verdict",
+      "if stronger confidence is desired, collect repeated candidate-emission checks over a defined window",
+      "document whether downstream review workload quality changes measurably"
+    ]
+  }
+}

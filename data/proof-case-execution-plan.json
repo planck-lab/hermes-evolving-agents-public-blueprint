@@ -1,0 +1,125 @@
+{
+  "plan_id": "plan-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "title": "Execution plan for research instrumentation proof case",
+  "objective": "Turn the selected regression/instrumentation candidate into one bounded Phase-2A execution path with explicit inputs, review logic, intervention scope, and measurement criteria.",
+  "phases": [
+    {
+      "step": 1,
+      "name": "Capture trigger evidence",
+      "goal": "Replace scaffold placeholders with a concrete triggering snapshot and provenance.",
+      "inputs_required": [
+        "raw dashboard or metric snapshot reference",
+        "exact sessions/tasks underlying the alert",
+        "current success/quality definition used for the alert"
+      ],
+      "outputs": [
+        "filled signal.created_at",
+        "raw metric snapshot ref",
+        "session/query provenance"
+      ],
+      "done_when": [
+        "signal object has no placeholder provenance fields",
+        "the alert can be traced back to specific underlying evidence"
+      ]
+    },
+    {
+      "step": 2,
+      "name": "Run review and classify the case",
+      "goal": "Create a review artifact that decides whether the case looks like true regression, measurement artifact, or remains uncertain.",
+      "inputs_required": [
+        "signal evidence package",
+        "review owner",
+        "review artifact location"
+      ],
+      "outputs": [
+        "filled review object",
+        "case classification",
+        "explicit alternatives considered"
+      ],
+      "decision_modes": [
+        "true-regression",
+        "measurement-artifact",
+        "inconclusive"
+      ],
+      "done_when": [
+        "review decision is recorded with rationale",
+        "alternatives and uncertainty are explicit"
+      ]
+    },
+    {
+      "step": 3,
+      "name": "Define one minimal reversible intervention",
+      "goal": "Choose the smallest useful change, preferably diagnostic/measurement-first rather than routing/default mutation.",
+      "inputs_required": [
+        "review result",
+        "candidate intervention options",
+        "rollback mechanism"
+      ],
+      "outputs": [
+        "filled adoption object",
+        "exact intervention statement",
+        "rollback plan"
+      ],
+      "guardrails": [
+        "no global default shift",
+        "no skill demotion from thin evidence",
+        "prefer instrumentation or segmentation change first"
+      ],
+      "done_when": [
+        "the intervention is narrow and reversible",
+        "approval owner is named"
+      ]
+    },
+    {
+      "step": 4,
+      "name": "Implement and log the runtime change",
+      "goal": "Record exactly what changed, where, and when.",
+      "inputs_required": [
+        "approved intervention",
+        "implementation path",
+        "activation time"
+      ],
+      "outputs": [
+        "filled change object",
+        "change_ref",
+        "rollback_ref",
+        "affected metrics/views"
+      ],
+      "done_when": [
+        "change object is fully instantiated",
+        "change can be audited and reversed"
+      ]
+    },
+    {
+      "step": 5,
+      "name": "Measure bounded post-change effect",
+      "goal": "Observe the case over one defined window and produce an honest verdict with confounders.",
+      "inputs_required": [
+        "baseline comparator",
+        "window start/end",
+        "minimum evidence threshold",
+        "disconfirmation rule"
+      ],
+      "outputs": [
+        "filled measurement object",
+        "final verdict",
+        "explicit limitations"
+      ],
+      "done_when": [
+        "measurement reports result plus uncertainty",
+        "final verdict is one of: true-regression, measurement-artifact, inconclusive"
+      ]
+    }
+  ],
+  "open_dependencies": [
+    "decision on whether bounded measurement is sufficient for local verdict",
+    "optional repeated observation window for stronger confidence",
+    "broader downstream evidence for sustained review-quality improvement"
+  ],
+  "success_conditions": [
+    "All five trace-spine objects have concrete non-placeholder owner/time/reference fields.",
+    "One reversible intervention is actually executed.",
+    "The result can be honestly classified without overselling."
+  ]
+}

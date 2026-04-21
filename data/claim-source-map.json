@@ -1,0 +1,66 @@
+{
+  "claims": [
+    {
+      "id": "C-001",
+      "statement_de": "Hermes ist aktuell ungefaehr Phase 1.5.",
+      "statement_en": "Hermes is currently approximately at Phase 1.5.",
+      "claim_type": "Inference",
+      "evidence_class": "E4",
+      "sources": ["internal-roadmap-2026-04-20", "signal-router-spec-2026-04-10", "truth-alignment-2026-04-12"],
+      "status": "partially-supported",
+      "caveats": [
+        "Phase assignment is an interpretive synthesis, not a direct observation.",
+        "A public-ready gate matrix is still incomplete."
+      ]
+    },
+    {
+      "id": "C-002",
+      "statement_de": "Bridge Closure ist derzeit wahrscheinlich der Hauptengpass.",
+      "statement_en": "Bridge Closure is currently likely the primary bottleneck.",
+      "claim_type": "Inference",
+      "evidence_class": "E4",
+      "sources": ["internal-roadmap-2026-04-20", "truth-alignment-2026-04-12"],
+      "status": "partially-supported",
+      "caveats": [
+        "Alternative bottlenecks such as coverage quality and attribution remain plausible.",
+        "The word primary should stay challengeable until comparative evidence is stronger."
+      ]
+    },
+    {
+      "id": "C-003",
+      "statement_de": "Messflaechen, Signal-Logik und Review-/Adoption-Staging existieren bereits.",
+      "statement_en": "Measurement surfaces, signal logic, and review/adoption staging already exist.",
+      "claim_type": "Observation",
+      "evidence_class": "E1",
+      "sources": ["internal-roadmap-2026-04-20", "signal-router-spec-2026-04-10", "truth-alignment-2026-04-12"],
+      "status": "supported",
+      "caveats": [
+        "Existence does not yet prove repeated closed-loop effectiveness."
+      ]
+    },
+    {
+      "id": "C-004",
+      "statement_de": "Ein stabiler wiederholter Closed Learning Loop ist noch nicht als Fakt belegt.",
+      "statement_en": "A stable repeated closed learning loop is not yet established as fact.",
+      "claim_type": "Observation",
+      "evidence_class": "E1",
+      "sources": ["truth-alignment-2026-04-12", "internal-roadmap-2026-04-20"],
+      "status": "supported",
+      "caveats": [
+        "This statement depends on the current internal operational record and may change with new proof cases."
+      ]
+    },
+    {
+      "id": "C-005",
+      "statement_de": "Controlled Selection soll erst nach belastbarerem Closed Feedback kommen.",
+      "statement_en": "Controlled Selection should only come after stronger Closed Feedback.",
+      "claim_type": "Design Decision",
+      "evidence_class": "E5",
+      "sources": ["internal-roadmap-2026-04-20"],
+      "status": "intentional",
+      "caveats": [
+        "This is a governance choice for this project, not a universal law."
+      ]
+    }
+  ]
+}

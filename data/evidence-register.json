@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "id": "internal-roadmap-2026-04-20",
+      "type": "E1",
+      "title": "Hermes x Evolving Agents - Phases and Big-Picture Roadmap",
+      "location": "private vault note",
+      "accessibility": "private",
+      "captured_at": "2026-04-20",
+      "note": "Primary internal synthesis of phase model, milestones, and bottlenecks.",
+      "supports": ["C-001", "C-002", "C-003", "C-004", "C-005"]
+    },
+    {
+      "id": "signal-router-spec-2026-04-10",
+      "type": "E1",
+      "title": "Signal Router v1 - Minimal Spec",
+      "location": "private vault note",
+      "accessibility": "private",
+      "captured_at": "2026-04-10",
+      "note": "Primary internal specification for signal routing from measurement to review/exchange paths.",
+      "supports": ["C-001", "C-003"]
+    },
+    {
+      "id": "truth-alignment-2026-04-12",
+      "type": "E1",
+      "title": "Dashboard Delivery and Hermes Learning Loop - Truth Alignment",
+      "location": "private vault note",
+      "accessibility": "private",
+      "captured_at": "2026-04-12",
+      "note": "Primary internal truth-alignment note on actual operational loop maturity and current limits.",
+      "supports": ["C-001", "C-002", "C-003", "C-004"]
+    }
+  ],
+  "notes": [
+    {
+      "id": "N-001",
+      "topic": "public-evidence-limits",
+      "text": "Current strongest evidence remains private; public release would need redacted excerpts, summaries, or reproducible surrogates."
+    },
+    {
+      "id": "N-002",
+      "topic": "claim-discipline",
+      "text": "Inference and design decisions should not be phrased like direct observations."
+    }
+  ]
+}

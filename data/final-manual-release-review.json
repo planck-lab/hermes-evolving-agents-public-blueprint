@@ -1,0 +1,52 @@
+{
+  "review_id": "manual-release-review-2026-04-001",
+  "title": "Final manual release review for Hermes public blueprint",
+  "status": "completed-confirmed",
+  "review_date": "2026-04-21",
+  "overall_decision": "publish-now",
+  "summary": "The blueprint is now coherent enough for a conservative public release. Remaining gaps are optional refinements rather than blockers, provided the current bounded claim posture is preserved.",
+  "verdict": {
+    "publish_now": true,
+    "hold": false,
+    "publish_later": false,
+    "why": [
+      "Narrative and evidence posture are now strong enough for scrutiny and coherent enough for a bounded public release.",
+      "The DE/EN consistency pass, polish pass, and confirmatory go/no-go check are complete.",
+      "Public/private boundary language remains adequate as long as the current bounded claim posture is preserved."
+    ]
+  },
+  "review_checks": [
+    {
+      "area": "Oversell risk",
+      "status": "acceptable",
+      "note": "Current wording remains conservative after the DE/EN pass, polish pass, and confirmatory review."
+    },
+    {
+      "area": "Privacy boundary",
+      "status": "acceptable",
+      "note": "Private/public evidence boundary is disclosed clearly enough for the current release posture."
+    },
+    {
+      "area": "Narrative coherence",
+      "status": "acceptable",
+      "note": "Canonical reading path and reader routing now carry the story well."
+    },
+    {
+      "area": "Presentation readiness",
+      "status": "acceptable",
+      "note": "Landing page and README are now polished enough for a bounded public release."
+    },
+    {
+      "area": "Proof-case framing",
+      "status": "acceptable",
+      "note": "Prominence remains controlled: visible but bounded."
+    }
+  ],
+  "blocking_items_before_public_release": [],
+  "non_blocking_items": [
+    "Reduce raw file-path density further if a more productized landing page is desired.",
+    "Expand the evidence package later if stronger public proof is desired.",
+    "Run future stylistic iteration only if the repo scope broadens."
+  ],
+  "recommended_next_action": "publish_when_desired_with_bounded_claims"
+}

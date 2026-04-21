@@ -1,0 +1,116 @@
+{
+  "checklist_id": "release-readiness-2026-04-001",
+  "title": "Release readiness checklist for Hermes public blueprint",
+  "status": "review-completed-go",
+  "current_posture": "bounded public-release candidate, still unpublished",
+  "release_recommendation_now": "publish now if desired; conservative bounded release is defensible",
+  "gates": [
+    {
+      "name": "Narrative clarity",
+      "status": "ready",
+      "checks": [
+        {
+          "item": "Canonical 7-page reading path is explicit",
+          "status": "pass"
+        },
+        {
+          "item": "Public-safe wording is explicit",
+          "status": "pass"
+        },
+        {
+          "item": "Proof case is positioned as bounded, not oversold",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "Evidence posture",
+      "status": "partially-ready",
+      "checks": [
+        {
+          "item": "One bounded proof case exists",
+          "status": "pass"
+        },
+        {
+          "item": "Measurement limits are disclosed",
+          "status": "pass"
+        },
+        {
+          "item": "Stronger repeated downstream evidence exists",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "name": "DE/EN publishing coherence",
+      "status": "ready",
+      "checks": [
+        {
+          "item": "EN index and DE index reflect the same canonical structure",
+          "status": "pass"
+        },
+        {
+          "item": "Key proof-case verdict exists in EN and DE",
+          "status": "pass"
+        },
+        {
+          "item": "Full pass for wording consistency across canonical pages",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "Presentation polish",
+      "status": "ready",
+      "checks": [
+        {
+          "item": "Site has a clear canonical landing page",
+          "status": "pass"
+        },
+        {
+          "item": "Release-grade visual polish review completed",
+          "status": "pass"
+        },
+        {
+          "item": "Final public IA frozen",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "name": "Publication risk controls",
+      "status": "ready",
+      "checks": [
+        {
+          "item": "Oversell guardrail language exists",
+          "status": "pass"
+        },
+        {
+          "item": "Public/private evidence boundary is disclosed",
+          "status": "pass"
+        },
+        {
+          "item": "Final manual release review completed",
+          "status": "pass"
+        }
+      ]
+    }
+  ],
+  "must_finish_before_public_release": [],
+  "nice_to_have": [
+    "Repeated observation window for stronger downstream-evidence confidence.",
+    "A cleaner future worked example from a fresh signal onward.",
+    "Public-ready redacted evidence package excerpts."
+  ],
+  "ship_decision_logic": {
+    "ship_now_if": [
+      "The current goal is a bounded public blueprint rather than a broad capability claim.",
+      "The bounded proof case is clearly labeled as bounded and non-longitudinal.",
+      "You keep the current privacy boundary and oversell guardrails intact."
+    ],
+    "wait_if": [
+      "You want a more productized landing page before showing the repo publicly.",
+      "You want lower risk of readers overinterpreting the bounded proof case."
+    ]
+  }
+}

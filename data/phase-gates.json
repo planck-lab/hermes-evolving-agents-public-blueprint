@@ -1,0 +1,84 @@
+{
+  "gates": [
+    {
+      "id": "G-1.5-1",
+      "phase_transition": "1 -> 1.5",
+      "name": "Strong Signal Detection",
+      "status": "met",
+      "criterion": "The system can distinguish stronger candidate signals from weaker or noisier evidence.",
+      "evidence": ["signal-router-spec-2026-04-10", "internal-roadmap-2026-04-20"],
+      "reviewer": "internal synthesis",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-1.5-2",
+      "phase_transition": "1 -> 1.5",
+      "name": "Signal Routing",
+      "status": "met",
+      "criterion": "Live signals can be translated into standardized review-oriented artifacts.",
+      "evidence": ["signal-router-spec-2026-04-10", "truth-alignment-2026-04-12"],
+      "reviewer": "internal synthesis",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-1.5-3",
+      "phase_transition": "1 -> 1.5",
+      "name": "Review and Inbox Bridge",
+      "status": "met",
+      "criterion": "Stronger signals do not vanish informally; they can enter a review/inbox path.",
+      "evidence": ["truth-alignment-2026-04-12", "internal-roadmap-2026-04-20"],
+      "reviewer": "internal synthesis",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-1.5-4",
+      "phase_transition": "1.5 internal progression",
+      "name": "Adoption Candidate Path",
+      "status": "partial",
+      "criterion": "Candidate states such as proposed/pending/adopted/parked exist with enough structure to evaluate one-path adoption.",
+      "evidence": ["internal-roadmap-2026-04-20", "truth-alignment-2026-04-12"],
+      "reviewer": "internal synthesis",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-2-1",
+      "phase_transition": "1.5 -> 2",
+      "name": "Adoption Mechanism",
+      "status": "open",
+      "criterion": "A canonical adoption object and state machine can move one reviewed signal into one reversible runtime-affecting change.",
+      "evidence": [],
+      "reviewer": "pending",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-2-2",
+      "phase_transition": "1.5 -> 2",
+      "name": "Runtime Change Traceability",
+      "status": "open",
+      "criterion": "The system can show exactly what changed, when it changed, and which adoption object caused it.",
+      "evidence": [],
+      "reviewer": "pending",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-2-3",
+      "phase_transition": "1.5 -> 2",
+      "name": "Measured Effect Verification",
+      "status": "open",
+      "criterion": "At least one documented case links a reviewed signal to a change and then to a later measured effect with explicit uncertainty.",
+      "evidence": [],
+      "reviewer": "pending",
+      "updated_at": "2026-04-21"
+    },
+    {
+      "id": "G-2-4",
+      "phase_transition": "2 internal progression",
+      "name": "Repeated Closed Loops",
+      "status": "open",
+      "criterion": "More than one closed-loop case works without bespoke manual glue each time.",
+      "evidence": [],
+      "reviewer": "pending",
+      "updated_at": "2026-04-21"
+    }
+  ]
+}

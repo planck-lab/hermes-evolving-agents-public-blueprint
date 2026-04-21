@@ -1,0 +1,90 @@
+{
+  "change_record_id": "chglog-2026-04-phase2a-001",
+  "proof_case_id": "pc-2026-04-phase2a-001",
+  "title": "Retrospective change record for segmentation and outcome-consistency gate",
+  "status": "retrospectively-logged",
+  "record_type": "retrospective-execution-record",
+  "summary": "The selected proof-case intervention is now tied to concrete live code and git commits. The record is retrospective: the gate existed before the proof case was formalized, but it is now logged explicitly as the active change surface for Step 4.",
+  "selected_intervention_ref": "data/proof-case-intervention-selection.json",
+  "change_owner": "Hermes / Jan-approved proof-case logging",
+  "change_scope": "selection-layer guard for regression candidate emission",
+  "implementation": {
+    "state": "already-present-in-live-code",
+    "change_surface": [
+      {
+        "path": "internal/hermes-agent/scripts/skill_signal_gates.py",
+        "role": "encodes task_type gate and outcome-definition consistency gate"
+      },
+      {
+        "path": "internal/hermes-agent/scripts/generate_regression_draft_from_db.py",
+        "role": "applies the gate while selecting regression candidates from state.db"
+      }
+    ],
+    "foundation_commit": {
+      "sha": "98adafdb6b9fe90370ec288fe49387fc702fed12",
+      "committed_at": "2026-04-13T16:54:24+02:00",
+      "subject": "feat: add bounded-autonomy telemetry helpers and signal-router tooling"
+    },
+    "activation_commit": {
+      "sha": "1eb678ae5b71212224c82b1893ce972bffef60d9",
+      "committed_at": "2026-04-19T19:47:47+02:00",
+      "subject": "fix: centralize session finalize eval and skill tracking"
+    },
+    "activation_reference": {
+      "kind": "git-commit",
+      "sha": "1eb678ae5b71212224c82b1893ce972bffef60d9",
+      "committed_at": "2026-04-19T19:47:47+02:00",
+      "note": "Best grounded activation point for the conservative gate shape used in the proof case."
+    },
+    "implementation_notes": [
+      "The proof-case change record is retrospective rather than newly executed in this session.",
+      "The change was not introduced solely for this proof case; the proof case is now explicitly anchored to the existing live implementation.",
+      "The earlier 2026-04-13 commit provides the draft-generation foundation, while the 2026-04-19 commit is the best grounded activation point for the current gate behavior."
+    ]
+  },
+  "affected_metrics_and_views": [
+    {
+      "name": "regression candidate emission",
+      "surface": "scripts/generate_regression_draft_from_db.py",
+      "effect": "Candidates with missing task_type or outcome-definition inconsistency are suppressed before draft generation."
+    },
+    {
+      "name": "skill-level regression handling posture",
+      "surface": "signal-router draft inputs",
+      "effect": "Null-segmented or internally inconsistent cases are treated as instrumentation-first rather than direct skill evidence."
+    },
+    {
+      "name": "downstream review workload quality",
+      "surface": "review candidate set",
+      "effect": "Expected reduction in false-positive regression candidates reaching review."
+    }
+  ],
+  "rollback": {
+    "strategy": "Revert or remove the gate definition/invocation and restore prior regression candidate emission behavior.",
+    "references": [
+      "internal/hermes-agent/scripts/skill_signal_gates.py",
+      "internal/hermes-agent/scripts/generate_regression_draft_from_db.py"
+    ],
+    "rollback_unit": "1eb678ae5b71212224c82b1893ce972bffef60d9"
+  },
+  "verification_basis": [
+    "Live files contain selection_gate_reason() and regression-candidate suppression logic.",
+    "Git history grounds the current gate behavior to concrete commits on 2026-04-13 and 2026-04-19.",
+    "The selected proof-case intervention matches the live implementation surface."
+  ],
+  "confidence_posture": "medium",
+  "limitations": [
+    "This is a retrospective record, not a freshly executed code change in the proof-case session.",
+    "The gate existed before the proof case was formalized, so causality toward later outcomes still requires a bounded measurement window.",
+    "Historical provenance gaps in legacy rows are still unresolved."
+  ],
+  "next_required_step": {
+    "step": 5,
+    "name": "Measure bounded post-change effect",
+    "actions": [
+      "define a baseline comparator for pre/post candidate quality",
+      "set the observation window and minimum threshold",
+      "record whether false-positive regression candidates actually drop"
+    ]
+  }
+}
