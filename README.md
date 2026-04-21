@@ -61,12 +61,21 @@ Use this if you are deciding whether the blueprint is publishable:
 - **publishable bounded blueprint, still intentionally conservative**
 
 ## Visual story and website structure
-The companion website is being shaped around a scientific/public-communication structure:
+The companion website is now organized around a scientific/public-communication structure:
 1. **Problem framing** — why bounded autonomy matters
 2. **System model** — architecture and lifecycle diagrams
 3. **Evidence posture** — what is observed, inferred, or still open
 4. **Claims and limitations** — explicitly bounded conclusions
 5. **References** — numbered, inspectable sources
+
+### Core figures
+![Bounded agent learning loop](docs/assets/bounded-agent-learning-loop.svg)
+
+*Figure A. Public-facing architecture of the bounded learning loop: signal → review → intervention → runtime → measurement inside a governance frame.*
+
+![Evidence ladder for bounded public claims](docs/assets/evidence-ladder.svg)
+
+*Figure B. Evidence ladder for keeping observation, interpretation, decision, measurement, and publication distinct in public communication.*
 
 ## What this repository contains
 
@@ -86,12 +95,30 @@ Structured files for:
 Documents and JSON artifacts that track readiness, remaining polish work, and the current publish-now verdict.
 
 ## Recommended figures and tables
-The repo/website should emphasize a small number of high-value explanatory artifacts:
+The repo/website now emphasizes a compact set of explanatory artifacts:
 - one **architecture diagram**
 - one **feedback/lifecycle diagram**
 - one **claim/evidence table**
 - one **component table** (function, inputs, outputs, failure modes)
 - one **limitations/non-goals table**
+
+### Component matrix
+| Component | Function | Main inputs | Main outputs | Main failure mode |
+|---|---|---|---|---|
+| Signal layer | Detect candidate improvement or risk signals | Telemetry, logs, human observations | Candidate issue or change request | Noise mistaken for a meaningful signal |
+| Review layer | Challenge and prioritize candidate changes | Signals, historical context, human judgment | Explicit decision or rejection | Weak triage or unchallenged assumptions |
+| Intervention layer | Apply a bounded change | Approved rule, patch, routing change, prompt or workflow update | Modified system condition | Change without reversibility or traceability |
+| Runtime layer | Execute bounded agent behavior | Current system configuration and user tasks | Observable task behavior | Local success mistaken for general capability |
+| Measurement layer | Estimate effect and caveats | Before/after traces, same-snapshot comparisons, reviewer notes | Bounded effect statement | Overclaiming from sparse or non-longitudinal evidence |
+
+### Limitations and non-goals
+| Area | Current posture |
+|---|---|
+| Longitudinal proof | Not yet established |
+| Broad autonomous self-improvement | Not claimed |
+| Public raw evidence completeness | Partial; strongest artifacts remain private |
+| One-number maturity score | Intentionally avoided |
+| Full external benchmark equivalence | Not yet demonstrated |
 
 ## Main unresolved questions
 1. What exactly is the public object being classified: system, deployment, workflow, or loop?
@@ -129,7 +156,7 @@ Related artifacts:
 - `data/release-readiness-checklist.json`
 
 ## Current status
-Local repo state only. No public push has been made yet.
+Currently maintained in a GitHub repository with public-release readiness as the target state. Visibility and GitHub Pages publication can be toggled conservatively at release time.
 
 ## References (inline citations)
 [1] NIST AI RMF 1.0, 2023. https://doi.org/10.6028/NIST.AI.100-1  

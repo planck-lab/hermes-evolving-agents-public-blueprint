@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hermes Evolving Agents Roadmap — Evidence-First Blueprint</title>
+  <meta name="description" content="Evidence-first public blueprint for bounded agent maturity, governance, and challengeable claims.">
   <style>
     :root {
       color-scheme: light;
@@ -20,7 +21,6 @@
       --amber-soft: #fff7d6;
       --rose-soft: #ffe4e6;
       --shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
-      --radius: 20px;
     }
     * { box-sizing: border-box; }
     body {
@@ -36,7 +36,7 @@
     .topnav {
       display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
       position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px);
-      background: rgba(244,247,251,.86); padding: 10px 0;
+      background: rgba(244,247,251,.88); padding: 10px 0;
     }
     .pill {
       display: inline-flex; align-items: center; gap: 8px;
@@ -46,59 +46,52 @@
     .pill.primary { background: var(--accent-soft); color: #1d4ed8; border-color: #bfdbfe; }
     .pill.success { background: var(--green-soft); color: #166534; border-color: #bbf7d0; }
     .pill.warning { background: var(--amber-soft); color: #92400e; border-color: #fde68a; }
-    .hero, .section, .figure-card {
+    .hero, .section {
       background: var(--surface); border: 1px solid var(--line); border-radius: 28px;
       box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
     }
     .hero {
       background: radial-gradient(circle at top right, rgba(37,99,235,.16), transparent 30%), var(--surface);
     }
-    .eyebrow {
+    .eyebrow, .kicker {
       color: var(--accent); text-transform: uppercase; font-size: 12px; letter-spacing: .05em; font-weight: 800;
       margin-bottom: 12px;
     }
     h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.04; margin: 0 0 14px; }
     h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin: 0 0 10px; line-height: 1.1; }
     h3 { font-size: 1.05rem; margin: 0 0 8px; }
-    .lead { font-size: 1.1rem; color: var(--muted); max-width: 860px; }
+    .lead { font-size: 1.1rem; color: var(--muted); max-width: 900px; }
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .span-3 { grid-column: span 3; }
     .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
     .span-6 { grid-column: span 6; }
+    .span-7 { grid-column: span 7; }
     .span-8 { grid-column: span 8; }
     .span-12 { grid-column: span 12; }
     .card {
       background: var(--surface-3); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
     }
-    .small { color: var(--muted); font-size: 14px; }
-    .muted { color: var(--muted); }
-    .kicker {
-      color: var(--accent); text-transform: uppercase; font-size: 12px; font-weight: 800; letter-spacing: .04em; margin-bottom: 8px;
-    }
+    .small, .muted { color: var(--muted); }
     ul, ol { margin: 10px 0 0; padding-left: 20px; }
     li + li { margin-top: 6px; }
-    code {
-      background: #eff6ff; border-radius: 8px; padding: 2px 6px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: .95em;
-    }
     table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 15px; }
     th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 10px 8px; vertical-align: top; }
     th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
     .figure {
       width: 100%; background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
-      border: 1px solid var(--line); border-radius: 20px; padding: 16px; overflow: auto;
+      border: 1px solid var(--line); border-radius: 20px; padding: 14px;
     }
-    figure { margin: 0; }
-    figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
-    .ref-list li { margin-bottom: 10px; }
+    .figure img { width: 100%; display: block; border-radius: 16px; }
+    .caption { color: var(--muted); font-size: 14px; margin-top: 10px; }
     .note {
-      padding: 14px 16px; border-radius: 16px; background: var(--surface-2); border: 1px solid #bfdbfe;
-      color: #1e3a8a;
+      padding: 14px 16px; border-radius: 16px; background: var(--surface-2); border: 1px solid #bfdbfe; color: #1e3a8a;
     }
     .risk { background: #fff7ed; border-color: #fdba74; color: #9a3412; }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
     .footer { color: var(--muted); font-size: 14px; margin-top: 20px; }
     @media (max-width: 920px) {
-      .span-4, .span-6, .span-8, .span-12 { grid-column: span 12; }
+      .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 12; }
       .topnav { position: static; }
     }
   </style>
@@ -107,148 +100,84 @@
   <main class="wrap">
     <nav class="topnav">
       <a class="pill" href="#overview">Overview</a>
-      <a class="pill" href="#story">Story</a>
-      <a class="pill" href="#architecture">Architecture</a>
-      <a class="pill" href="#evidence">Evidence</a>
-      <a class="pill" href="#governance">Governance</a>
+      <a class="pill" href="#narrative">Narrative</a>
+      <a class="pill" href="#figures">Figures</a>
+      <a class="pill" href="#claims">Claims</a>
+      <a class="pill" href="#components">Components</a>
+      <a class="pill" href="#limits">Limits</a>
       <a class="pill" href="#references">References</a>
     </nav>
 
     <section class="hero" id="overview">
-      <div class="eyebrow">Evidence-first blueprint · scientific communication draft</div>
+      <div class="eyebrow">Evidence-first blueprint · bounded public release</div>
       <h1>Hermes Evolving Agents Roadmap</h1>
-      <p class="lead">A public-facing blueprint for describing agent maturity under bounded autonomy, explicit governance, and challengeable evidence. The purpose is not to claim broad self-improvement, but to show how an agent system can be evaluated, governed, and communicated with scientific restraint [1][2][3][4].</p>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
-        <span class="pill primary">Status: publishable bounded blueprint</span>
+      <p class="lead">A public-facing blueprint for describing agent maturity under bounded autonomy, explicit governance, and challengeable evidence. The point is not to claim broad self-improvement, but to show how an agent system can be evaluated, governed, and communicated with scientific restraint [1][2][3][4].</p>
+      <div class="cta">
+        <span class="pill primary">Status: public blueprint</span>
         <span class="pill warning">Claim posture: non-longitudinal</span>
         <span class="pill success">Method: evidence-first</span>
+        <a class="pill" href="en/index.md">Read English docs</a>
+        <a class="pill" href="de/index.md">Deutsche Docs</a>
       </div>
     </section>
 
-    <section class="section" id="story">
-      <div class="kicker">Image story</div>
-      <h2>From hype-heavy autonomy claims to bounded, testable system maturity</h2>
+    <section class="section" id="narrative">
+      <div class="kicker">Narrative spine</div>
+      <h2>From hype-heavy autonomy claims to bounded, testable maturity statements</h2>
       <div class="grid">
         <div class="span-4 card">
-          <h3>Figure story 1 — The problem</h3>
-          <p class="small">Many agent narratives jump directly from capability demos to broad autonomy claims. Public trust breaks when evaluation, governance, and uncertainty are underspecified [1][4].</p>
+          <h3>1. Problem framing</h3>
+          <p class="small">Agent narratives often move from compelling demos to broad autonomy language too quickly. Trust breaks when evidence, governance, and uncertainty are underspecified [1][4].</p>
         </div>
         <div class="span-4 card">
-          <h3>Figure story 2 — The operating model</h3>
-          <p class="small">This blueprint treats the agent as a governed loop: signal → review → intervention → change → measurement. Human oversight remains explicit rather than assumed away [2][3][5].</p>
+          <h3>2. Operating model</h3>
+          <p class="small">This blueprint treats the system as a governed loop: signal → review → intervention → runtime → measurement. Human oversight is explicit rather than assumed away [2][3][5].</p>
         </div>
         <div class="span-4 card">
-          <h3>Figure story 3 — The evidence boundary</h3>
-          <p class="small">The strongest current claim is bounded: the system shows partial proof of controlled feedback and instrumentation discipline, not durable autonomous self-improvement [6][7][8].</p>
+          <h3>3. Evidence boundary</h3>
+          <p class="small">The strongest current public claim is deliberately narrow: partial proof of controlled feedback and instrumentation discipline, not stable autonomous self-improvement [6][7][8].</p>
         </div>
       </div>
     </section>
 
-    <section class="figure-card" id="architecture">
-      <div class="kicker">Figure 1</div>
-      <h2>Bounded agent maturity architecture</h2>
-      <figure>
-        <div class="figure">
-          <svg viewBox="0 0 1100 420" width="100%" role="img" aria-label="Architecture diagram showing signal intake, review, intervention, runtime, and measurement under governance and references.">
-            <defs>
-              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"></path>
-              </marker>
-            </defs>
-            <rect x="20" y="30" width="1060" height="340" rx="24" fill="#f8fbff" stroke="#cbd5e1"/>
-            <rect x="55" y="120" width="150" height="92" rx="18" fill="#dbeafe" stroke="#2563eb"/>
-            <text x="130" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#1e3a8a">Signal</text>
-            <text x="130" y="176" text-anchor="middle" font-size="13" fill="#475569">telemetry, alerts,</text>
-            <text x="130" y="194" text-anchor="middle" font-size="13" fill="#475569">candidate issues</text>
-
-            <rect x="250" y="120" width="170" height="92" rx="18" fill="#dcfce7" stroke="#16a34a"/>
-            <text x="335" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#166534">Review</text>
-            <text x="335" y="176" text-anchor="middle" font-size="13" fill="#475569">human-in-the-loop,</text>
-            <text x="335" y="194" text-anchor="middle" font-size="13" fill="#475569">triage, challenge</text>
-
-            <rect x="470" y="120" width="170" height="92" rx="18" fill="#fef3c7" stroke="#d97706"/>
-            <text x="555" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#92400e">Intervention</text>
-            <text x="555" y="176" text-anchor="middle" font-size="13" fill="#475569">conservative change,</text>
-            <text x="555" y="194" text-anchor="middle" font-size="13" fill="#475569">gate or selection rule</text>
-
-            <rect x="690" y="120" width="170" height="92" rx="18" fill="#ede9fe" stroke="#7c3aed"/>
-            <text x="775" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#5b21b6">Runtime</text>
-            <text x="775" y="176" text-anchor="middle" font-size="13" fill="#475569">agent behavior,</text>
-            <text x="775" y="194" text-anchor="middle" font-size="13" fill="#475569">bounded operation</text>
-
-            <rect x="910" y="120" width="135" height="92" rx="18" fill="#ffe4e6" stroke="#e11d48"/>
-            <text x="978" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#9f1239">Measure</text>
-            <text x="978" y="176" text-anchor="middle" font-size="13" fill="#475569">effects, caveats,</text>
-            <text x="978" y="194" text-anchor="middle" font-size="13" fill="#475569">counterfactuals</text>
-
-            <line x1="205" y1="166" x2="250" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
-            <line x1="420" y1="166" x2="470" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
-            <line x1="640" y1="166" x2="690" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
-            <line x1="860" y1="166" x2="910" y2="166" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
-
-            <rect x="140" y="270" width="800" height="56" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="8 6"/>
-            <text x="540" y="294" text-anchor="middle" font-size="17" font-weight="700" fill="#0f172a">Governance layer: bounded autonomy, documentation, oversight, reversibility, and risk management</text>
-            <text x="540" y="314" text-anchor="middle" font-size="13" fill="#475569">Aligned with NIST AI RMF, NIST GenAI Profile, and human-oversight expectations in the EU AI Act [1][2][3]</text>
-          </svg>
+    <section class="section" id="figures">
+      <div class="kicker">Figures</div>
+      <h2>Visual story</h2>
+      <div class="grid">
+        <div class="span-7">
+          <div class="figure"><img src="../docs/assets/bounded-agent-learning-loop.svg" alt="Bounded agent learning loop"></div>
+          <p class="caption"><strong>Figure A.</strong> Public-facing architecture of the bounded learning loop: signal, review, intervention, runtime, and measurement within a governance frame.</p>
         </div>
-        <figcaption><strong>Figure 1.</strong> Public-facing architecture of the bounded blueprint. The core idea is not full autonomy, but a governed learning loop in which every stronger claim must pass through review, explicit change selection, and later measurement [1][2][3][5].</figcaption>
-      </figure>
+        <div class="span-5 card">
+          <h3>Why this figure matters</h3>
+          <ul>
+            <li>Separates operational stages that are often collapsed in agent marketing.</li>
+            <li>Shows oversight as a first-class layer, not an afterthought.</li>
+            <li>Supports a narrower and more defensible claim language.</li>
+          </ul>
+        </div>
+        <div class="span-5 card">
+          <h3>Scientific communication rule</h3>
+          <p class="small">A good public figure reduces interpretive ambiguity. It should make it harder to confuse internal experimentation with validated system capability [1][4].</p>
+        </div>
+        <div class="span-7">
+          <div class="figure"><img src="../docs/assets/evidence-ladder.svg" alt="Evidence ladder for bounded public claims"></div>
+          <p class="caption"><strong>Figure B.</strong> Evidence ladder for keeping observation, interpretation, decision, measurement, and publication distinct.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="figure-card">
-      <div class="kicker">Figure 2</div>
-      <h2>Lifecycle from claim to evidence</h2>
-      <figure>
-        <div class="figure">
-          <svg viewBox="0 0 1100 260" width="100%" role="img" aria-label="Lifecycle showing claim discipline from hypothesis to bounded public statement.">
-            <defs>
-              <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L9,3 z" fill="#0f172a"></path>
-              </marker>
-            </defs>
-            <line x1="90" y1="130" x2="1010" y2="130" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow2)"/>
-            <g>
-              <circle cx="130" cy="130" r="34" fill="#dbeafe" stroke="#2563eb"/>
-              <text x="130" y="136" text-anchor="middle" font-size="14" font-weight="700">Observe</text>
-              <text x="130" y="182" text-anchor="middle" font-size="12" fill="#475569">internal artifact</text>
-            </g>
-            <g>
-              <circle cx="320" cy="130" r="34" fill="#dcfce7" stroke="#16a34a"/>
-              <text x="320" y="136" text-anchor="middle" font-size="14" font-weight="700">Interpret</text>
-              <text x="320" y="182" text-anchor="middle" font-size="12" fill="#475569">bounded inference</text>
-            </g>
-            <g>
-              <circle cx="510" cy="130" r="34" fill="#fef3c7" stroke="#d97706"/>
-              <text x="510" y="136" text-anchor="middle" font-size="14" font-weight="700">Decide</text>
-              <text x="510" y="182" text-anchor="middle" font-size="12" fill="#475569">governance choice</text>
-            </g>
-            <g>
-              <circle cx="700" cy="130" r="34" fill="#ede9fe" stroke="#7c3aed"/>
-              <text x="700" y="136" text-anchor="middle" font-size="14" font-weight="700">Measure</text>
-              <text x="700" y="182" text-anchor="middle" font-size="12" fill="#475569">effect + caveats</text>
-            </g>
-            <g>
-              <circle cx="890" cy="130" r="34" fill="#ffe4e6" stroke="#e11d48"/>
-              <text x="890" y="136" text-anchor="middle" font-size="14" font-weight="700">Publish</text>
-              <text x="890" y="182" text-anchor="middle" font-size="12" fill="#475569">bounded statement</text>
-            </g>
-          </svg>
-        </div>
-        <figcaption><strong>Figure 2.</strong> Lifecycle used by this blueprint to separate observation, inference, design decision, and measured effect. This structure is designed to reduce the common failure mode in agent discourse where ambition reads like present fact [1][4].</figcaption>
-      </figure>
-    </section>
-
-    <section class="section" id="evidence">
-      <div class="kicker">Evidence model</div>
-      <h2>Claims, evidence, and what remains uncertain</h2>
+    <section class="section" id="claims">
+      <div class="kicker">Claim posture</div>
+      <h2>Claims, evidence, and support status</h2>
       <div class="grid">
         <div class="span-8">
           <table>
             <thead>
-              <tr><th>Claim area</th><th>Current public stance</th><th>Evidence status</th><th>Main support</th></tr>
+              <tr><th>Claim area</th><th>Current public stance</th><th>Support status</th><th>Main support</th></tr>
             </thead>
             <tbody>
-              <tr><td>Bounded autonomy</td><td>Supported as a governance posture, not as a claim of full autonomy</td><td>Supported</td><td>NIST AI RMF, NIST GenAI Profile, EU AI Act [1][2][3]</td></tr>
+              <tr><td>Bounded autonomy</td><td>Supported as a governance posture, not as proof of full autonomy</td><td>Supported</td><td>NIST AI RMF, NIST GenAI Profile, EU AI Act [1][2][3]</td></tr>
               <tr><td>Agent evaluation</td><td>Should be multi-dimensional and benchmark-aware</td><td>Supported</td><td>HELM, AgentBench, GAIA, SWE-bench [4][6][7][8]</td></tr>
               <tr><td>Current maturity</td><td>Approximately Phase 1.5 with partial movement toward adoption-candidate behavior</td><td>Partially supported</td><td>Internal observations plus bounded interpretation; not yet externally benchmarked one-to-one</td></tr>
               <tr><td>Closed-loop self-improvement</td><td>Not yet defensible as stable fact</td><td>Not supported</td><td>Bounded proof only; no repeated longitudinal evidence yet</td></tr>
@@ -256,48 +185,60 @@
           </table>
         </div>
         <div class="span-4 card">
-          <h3>Why this matters</h3>
-          <p class="small">A scientific blueprint should make it easy to see what is already inspectable, what is still interpretive, and what would require more evidence before stronger public claims become justified.</p>
-          <div class="note" style="margin-top:12px;">
-            <strong>Quality rule:</strong> public claims should map to a source trail, evidence class, support status, and caveat set [1][4].
-          </div>
+          <h3>Quality rule</h3>
+          <p class="small">Public claims should map to a source trail, evidence class, support status, and caveat set. Anything weaker should remain framed as interpretation or aspiration.</p>
+          <div class="note" style="margin-top:12px;"><strong>Key discipline:</strong> internal artifacts and external citations are complementary, not interchangeable [1][4].</div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="governance">
-      <div class="kicker">Scientific communication standard</div>
-      <h2>Minimum scientific and public-trust standard</h2>
+    <section class="section" id="components">
+      <div class="kicker">System decomposition</div>
+      <h2>Component matrix</h2>
+      <table>
+        <thead>
+          <tr><th>Component</th><th>Function</th><th>Main inputs</th><th>Main outputs</th><th>Main failure mode</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Signal layer</td><td>Detect candidate improvement or risk signals</td><td>Telemetry, logs, human observations</td><td>Candidate issue or change request</td><td>Noise mistaken for signal</td></tr>
+          <tr><td>Review layer</td><td>Challenge and prioritize candidate changes</td><td>Signals, historical context, human judgment</td><td>Explicit decision or rejection</td><td>Weak triage or unchallenged assumptions</td></tr>
+          <tr><td>Intervention layer</td><td>Apply a bounded change</td><td>Approved rule, patch, routing change, workflow update</td><td>Modified system condition</td><td>Change without reversibility or traceability</td></tr>
+          <tr><td>Runtime layer</td><td>Execute bounded agent behavior</td><td>Current configuration and user tasks</td><td>Observable behavior</td><td>Local success mistaken for general capability</td></tr>
+          <tr><td>Measurement layer</td><td>Estimate effect and caveats</td><td>Before/after traces, same-snapshot comparisons, reviewer notes</td><td>Bounded effect statement</td><td>Overclaiming from sparse or non-longitudinal evidence</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="limits">
+      <div class="kicker">Boundaries</div>
+      <h2>Limitations and non-goals</h2>
       <div class="grid">
-        <div class="span-6 card">
-          <h3>Method requirements</h3>
-          <ul>
-            <li>Separate observation, inference, design decision, and hypothesis.</li>
-            <li>Cite external governance/evaluation sources for generalizable claims.</li>
-            <li>Expose limitations rather than burying them in prose.</li>
-            <li>Use diagrams and tables to reduce ambiguity in public interpretation.</li>
-          </ul>
+        <div class="span-7">
+          <table>
+            <thead>
+              <tr><th>Area</th><th>Current posture</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Longitudinal proof</td><td>Not yet established</td></tr>
+              <tr><td>Broad autonomous self-improvement</td><td>Not claimed</td></tr>
+              <tr><td>Public raw evidence completeness</td><td>Partial; strongest artifacts remain private</td></tr>
+              <tr><td>One-number maturity score</td><td>Intentionally avoided</td></tr>
+              <tr><td>Full external benchmark equivalence</td><td>Not yet demonstrated</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="span-6 card">
-          <h3>Source-quality rule</h3>
-          <ul>
-            <li>Prefer institutional or peer-reviewed sources for governance and evaluation framing.</li>
-            <li>Use numbered inline citations and a dedicated references page.</li>
-            <li>Keep internal evidence distinct from external literature.</li>
-            <li>Do not let private evidence masquerade as broadly auditable proof.</li>
-          </ul>
+        <div class="span-5 card risk">
+          <h3>Non-goal</h3>
+          <p>This site does not attempt to prove broad autonomous self-improvement. Its job is to communicate a bounded, challengeable operating model with visible evidence limits.</p>
         </div>
-      </div>
-      <div class="note risk" style="margin-top:18px;">
-        <strong>Non-goal:</strong> this site is not trying to prove broad autonomous self-improvement. Its job is to communicate a bounded, challengeable operating model with visible evidence limits.
       </div>
     </section>
 
     <section class="section" id="references">
       <div class="kicker">References</div>
       <h2>Current reference base</h2>
-      <p class="muted">The sources below support governance, methodology, and evaluation language on this page. For the fuller reference list, see <a href="../docs/en/references.md">en/references.md</a> and <a href="../docs/de/referenzen.md">de/referenzen.md</a>.</p>
-      <ol class="ref-list">
+      <p class="muted">The sources below support governance, methodology, and evaluation language on this page. For the fuller lists, see <a href="en/references.md">en/references.md</a> and <a href="de/referenzen.md">de/referenzen.md</a>.</p>
+      <ol>
         <li>[1] NIST AI RMF 1.0, 2023. <a href="https://doi.org/10.6028/NIST.AI.100-1">doi.org/10.6028/NIST.AI.100-1</a></li>
         <li>[2] NIST Generative AI Profile, 2024. <a href="https://doi.org/10.6028/NIST.AI.600-1">doi.org/10.6028/NIST.AI.600-1</a></li>
         <li>[3] EU AI Act, Regulation (EU) 2024/1689. <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">eur-lex.europa.eu/eli/reg/2024/1689/oj</a></li>
@@ -309,7 +250,7 @@
       </ol>
     </section>
 
-    <p class="footer">Public-facing communication should remain narrower than the private evidence graph. This page aims for legibility, bounded claims, and inspectable references rather than maximal rhetoric.</p>
+    <p class="footer">Public-facing communication should remain narrower than the private evidence graph. This page prioritizes legibility, bounded claims, and inspectable references over maximal rhetoric.</p>
   </main>
 </body>
 </html>

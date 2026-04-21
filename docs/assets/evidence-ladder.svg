@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Evidence ladder for public claims</title>
+  <desc id="desc">Diagram showing progression from observation to bounded public claim with limits and citations.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fbff"/>
+    </linearGradient>
+    <style>
+      .label{font:700 28px Inter,Arial,sans-serif;fill:#0f172a}
+      .sub{font:500 18px Inter,Arial,sans-serif;fill:#475569}
+      .cap{font:700 18px Inter,Arial,sans-serif;fill:#1d4ed8;letter-spacing:.08em;text-transform:uppercase}
+      .pill{font:700 22px Inter,Arial,sans-serif;fill:#0f172a}
+    </style>
+  </defs>
+  <rect width="1200" height="560" rx="32" fill="url(#bg2)" stroke="#dbe4f0"/>
+  <text x="64" y="74" class="cap">Figure B</text>
+  <text x="64" y="122" class="label">Evidence ladder for bounded public claims</text>
+  <text x="64" y="154" class="sub">The blueprint separates observation, interpretation, decision, and publication to keep ambition from reading as fact.</text>
+
+  <g transform="translate(92,230)">
+    <rect x="0" y="90" width="180" height="100" rx="24" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="90" y="138" text-anchor="middle" class="pill">Observe</text>
+    <text x="90" y="168" text-anchor="middle" class="sub">internal artifact</text>
+
+    <rect x="212" y="50" width="180" height="140" rx="24" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="302" y="110" text-anchor="middle" class="pill">Interpret</text>
+    <text x="302" y="140" text-anchor="middle" class="sub">bounded inference</text>
+    <text x="302" y="166" text-anchor="middle" class="sub">with caveats</text>
+
+    <rect x="424" y="10" width="180" height="180" rx="24" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="514" y="84" text-anchor="middle" class="pill">Decide</text>
+    <text x="514" y="114" text-anchor="middle" class="sub">governance choice</text>
+    <text x="514" y="140" text-anchor="middle" class="sub">or intervention</text>
+
+    <rect x="636" y="50" width="180" height="140" rx="24" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="726" y="110" text-anchor="middle" class="pill">Measure</text>
+    <text x="726" y="140" text-anchor="middle" class="sub">effect, counterfactual,</text>
+    <text x="726" y="166" text-anchor="middle" class="sub">limitations</text>
+
+    <rect x="848" y="90" width="180" height="100" rx="24" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
+    <text x="938" y="138" text-anchor="middle" class="pill">Publish</text>
+    <text x="938" y="168" text-anchor="middle" class="sub">bounded statement</text>
+
+    <path d="M180 140 H212" fill="none" stroke="#2563eb" stroke-width="4"/>
+    <path d="M392 120 H424" fill="none" stroke="#2563eb" stroke-width="4"/>
+    <path d="M604 120 H636" fill="none" stroke="#2563eb" stroke-width="4"/>
+    <path d="M816 140 H848" fill="none" stroke="#2563eb" stroke-width="4"/>
+  </g>
+
+  <text x="64" y="510" class="sub">Rule of thumb: every stronger public claim needs a visible source trail, evidence class, support status, and explicit limitation set.</text>
+</svg>

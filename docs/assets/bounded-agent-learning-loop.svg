@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Bounded agent learning loop</title>
+  <desc id="desc">Diagram showing signal, review, intervention, runtime, and measurement inside a bounded governance frame.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#eef4ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L0,12 L12,6 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .label{font:700 28px Inter,Arial,sans-serif;fill:#0f172a}
+      .sub{font:500 18px Inter,Arial,sans-serif;fill:#475569}
+      .cap{font:700 18px Inter,Arial,sans-serif;fill:#1d4ed8;letter-spacing:.08em;text-transform:uppercase}
+      .note{font:600 18px Inter,Arial,sans-serif;fill:#334155}
+    </style>
+  </defs>
+  <rect width="1200" height="680" rx="32" fill="url(#bg)"/>
+  <text x="70" y="78" class="cap">Figure A</text>
+  <text x="70" y="126" class="label">Bounded agent learning loop</text>
+  <text x="70" y="158" class="sub">A public-facing model for describing learning under governance, not unconstrained autonomy.</text>
+
+  <rect x="64" y="220" width="1072" height="360" rx="32" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <rect x="96" y="308" width="164" height="108" rx="24" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="178" y="352" text-anchor="middle" class="label" style="font-size:26px">Signal</text>
+  <text x="178" y="382" text-anchor="middle" class="sub">telemetry, alerts,</text>
+  <text x="178" y="406" text-anchor="middle" class="sub">candidate issues</text>
+
+  <rect x="316" y="308" width="184" height="108" rx="24" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="408" y="352" text-anchor="middle" class="label" style="font-size:26px">Review</text>
+  <text x="408" y="382" text-anchor="middle" class="sub">human challenge,</text>
+  <text x="408" y="406" text-anchor="middle" class="sub">triage, prioritization</text>
+
+  <rect x="556" y="308" width="188" height="108" rx="24" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="650" y="352" text-anchor="middle" class="label" style="font-size:26px">Intervention</text>
+  <text x="650" y="382" text-anchor="middle" class="sub">conservative change,</text>
+  <text x="650" y="406" text-anchor="middle" class="sub">gate, or selection rule</text>
+
+  <rect x="804" y="308" width="170" height="108" rx="24" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="889" y="352" text-anchor="middle" class="label" style="font-size:26px">Runtime</text>
+  <text x="889" y="382" text-anchor="middle" class="sub">bounded agent</text>
+  <text x="889" y="406" text-anchor="middle" class="sub">operation</text>
+
+  <rect x="1006" y="308" width="96" height="108" rx="24" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
+  <text x="1054" y="352" text-anchor="middle" class="label" style="font-size:24px">Measure</text>
+  <text x="1054" y="382" text-anchor="middle" class="sub" style="font-size:16px">effects</text>
+  <text x="1054" y="404" text-anchor="middle" class="sub" style="font-size:16px">caveats</text>
+
+  <line x1="260" y1="362" x2="316" y2="362" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="500" y1="362" x2="556" y2="362" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="744" y1="362" x2="804" y2="362" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="974" y1="362" x2="1006" y2="362" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="194" y="476" width="808" height="58" rx="18" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="10 8"/>
+  <text x="598" y="512" text-anchor="middle" class="note">Governance frame: documentation, human oversight, reversibility, bounded autonomy, and measurement discipline</text>
+
+  <text x="70" y="626" class="sub">Aligned with NIST AI RMF, the NIST Generative AI Profile, and bounded human-oversight expectations in the EU AI Act.</text>
+</svg>

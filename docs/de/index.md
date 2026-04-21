@@ -86,3 +86,23 @@ Der Blueprint ist jetzt im Modus **Polish und Konsolidierung**:
 
 ### Release prep
 - `release-readiness-checklist.md`
+
+
+## Wissenschaftliche Verankerung
+Die öffentliche Rahmung dieses Blueprints orientiert sich bewusst an externen Governance- und Evaluationsquellen statt nur an interner Autorität:
+- NIST AI RMF und NIST GenAI Profile für Governance, Dokumentation und Post-Deployment-Messung [1][2]
+- EU AI Act für bounded autonomy und menschliche Aufsicht [3]
+- HELM für mehrdimensionale Evaluation [4]
+- ReAct, AgentBench, GAIA und SWE-bench für Agent-Loop- und Task-Evaluationslogik [5][6][7][8]
+
+## Referenzen
+Siehe `referenzen.md` für die ausführlichere Referenzbasis.
+
+[1] NIST AI RMF 1.0, 2023. https://doi.org/10.6028/NIST.AI.100-1  
+[2] NIST Generative AI Profile, 2024. https://doi.org/10.6028/NIST.AI.600-1  
+[3] EU AI Act, Regulation (EU) 2024/1689. https://eur-lex.europa.eu/eli/reg/2024/1689/oj  
+[4] Liang et al., *Holistic Evaluation of Language Models*, TMLR 2023. https://openreview.net/forum?id=iO4LZibEqW  
+[5] Yao et al., *ReAct*, ICLR 2023. https://openreview.net/forum?id=WE_vluYUL-X  
+[6] Liu et al., *AgentBench*, 2023. https://arxiv.org/abs/2308.03688  
+[7] Mialon et al., *GAIA*, 2023. https://arxiv.org/abs/2311.12983  
+[8] Jimenez et al., *SWE-bench*, ICLR 2024. https://openreview.net/forum?id=VTF8yNQM66
