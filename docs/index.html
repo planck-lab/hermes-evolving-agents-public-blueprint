@@ -115,6 +115,25 @@
     }
     .risk { background: rgba(120, 53, 15, 0.24); border-color: rgba(251,191,36,0.24); color: #ffd8a8; }
     .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
+    .hero-grid { display:grid; grid-template-columns: 1.25fr .95fr; gap: 18px; align-items: stretch; margin-top: 22px; }
+    .hero-panel {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(18,27,52,0.68) 0%, rgba(12,18,35,0.92) 100%);
+      padding: 18px;
+    }
+    .hero-stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+    .stat strong { display:block; font-size: 1.35rem; color: var(--text); margin-bottom: 4px; }
+    .story-list { margin: 0; padding-left: 18px; }
+    .story-list li { color: var(--muted); }
+    .feature-figure { margin-top: 12px; }
+    .feature-figure img { width: 100%; display:block; border-radius: 18px; border: 1px solid var(--line); }
     .footer { color: var(--muted); font-size: 14px; margin-top: 20px; }
     @media (max-width: 920px) {
       .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 12; }
@@ -128,6 +147,7 @@
       table { min-width: 560px; font-size: 14px; }
       th, td { padding: 10px 10px; }
       .caption { font-size: 13px; }
+      .hero-grid, .hero-stats { grid-template-columns: 1fr; }
     }
 </style>
 </head>
@@ -154,6 +174,29 @@
         <span class="pill success">Method: evidence-first</span>
         <a class="pill" href="en/index.md">Read English docs</a>
         <a class="pill" href="de/index.md">Deutsche Docs</a>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-panel">
+          <div class="kicker">Why this page exists</div>
+          <h3>One disciplined public object, three visible boundaries</h3>
+          <ol class="story-list">
+            <li><strong>System boundary:</strong> what exactly is being described as the public object.</li>
+            <li><strong>Evidence boundary:</strong> what is observed, inferred, supported, or still open.</li>
+            <li><strong>Claim boundary:</strong> what can be stated now without overstating autonomy.</li>
+          </ol>
+          <div class="feature-figure">
+            <img src="assets/social-preview.svg" alt="Hermes evolving agents roadmap social preview">
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="kicker">At a glance</div>
+          <div class="hero-stats">
+            <div class="stat"><strong>DE / EN</strong><span class="small">two-language public narrative</span></div>
+            <div class="stat"><strong>3</strong><span class="small">responsive evidence tables</span></div>
+            <div class="stat"><strong>2</strong><span class="small">rebuilt high-fidelity diagrams</span></div>
+          </div>
+          <div class="note" style="margin-top:14px;"><strong>Reading rule:</strong> start with scope, then evidence posture, then the bounded verdict. The page is designed to make stronger claims harder, not easier.</div>
+        </div>
       </div>
     </section>
 
