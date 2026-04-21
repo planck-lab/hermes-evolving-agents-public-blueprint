@@ -231,7 +231,7 @@
         <span class="pill primary">Status: öffentlicher Blueprint</span>
         <span class="pill warning">Claim-Status: nicht longitudinal</span>
         <span class="pill success">Methode: evidence-first</span>
-        <a class="pill" href="../en/index.md">English Docs</a>
+        <a class="pill" href="../en/index.md">Englische Docs</a>
         <a class="pill" href="index.md">Deutsche Docs</a>
       </div>
       <div class="hero-grid">
@@ -284,7 +284,7 @@
     </section>
 
     <section class="section" id="figures">
-      <div class="kicker">Figures</div>
+      <div class="kicker">Grafiken</div>
       <h2>Visuelle Story</h2>
       <div class="grid">
         <div class="span-7">
@@ -318,39 +318,39 @@
           <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>Claim area</th><th>Current public stance</th><th>Support status</th><th>Main support</th></tr>
+              <tr><th>Claim-Bereich</th><th>Aktuelle öffentliche Einordnung</th><th>Stützstatus</th><th>Hauptstütze</th></tr>
             </thead>
             <tbody>
-              <tr><td>Begrenzt autonomy</td><td>Supported as a governance posture, not as proof of full autonomy</td><td>Supported</td><td>NIST AI RMF, NIST GenAI Profile, EU AI Act [1][2][3]</td></tr>
-              <tr><td>Agent evaluation</td><td>Should be multi-dimensional and benchmark-aware</td><td>Supported</td><td>HELM, AgentBench, GAIA, SWE-bench [4][6][7][8]</td></tr>
-              <tr><td>Current maturity</td><td>Approximately Phase 1.5 with partial movement toward adoption-candidate behavior</td><td>Partially supported</td><td>Internal observations plus bounded interpretation; not yet externally benchmarked one-to-one</td></tr>
-              <tr><td>Closed-loop self-improvement</td><td>Not yet defensible as stable fact</td><td>Not supported</td><td>Begrenzt proof only; no repeated longitudinal evidence yet</td></tr>
+              <tr><td>Begrenzt autonomy</td><td>Als Governance-Haltung gestützt, nicht als Nachweis voller Autonomie</td><td>Supported</td><td>NIST AI RMF, NIST GenAI Profile, EU AI Act [1][2][3]</td></tr>
+              <tr><td>Agenten-Evaluation</td><td>Sollte mehrdimensional und benchmark-bewusst sein</td><td>Supported</td><td>HELM, AgentBench, GAIA, SWE-bench [4][6][7][8]</td></tr>
+              <tr><td>Aktuelle Reife</td><td>Ungefähr Phase 1.5 mit teilweiser Bewegung in Richtung adoptionsfähigem Verhalten</td><td>Teilweise gestützt</td><td>Interne Beobachtungen plus begrenzte Interpretation; noch nicht 1:1 extern benchmarked</td></tr>
+              <tr><td>Closed-Loop-Selbstverbesserung</td><td>Noch nicht als stabile Tatsache belastbar</td><td>Nicht gestützt</td><td>Begrenzt proof only; no repeated longitudinal evidence yet</td></tr>
             </tbody>
           </table>
           </div>
         </div>
         <div class="span-4 card">
-          <h3>Quality rule</h3>
-          <p class="small">Public claims should map to a source trail, evidence class, support status, and caveat set. Anything weaker should remain framed as interpretation or aspiration.</p>
-          <div class="note" style="margin-top:12px;"><strong>Key discipline:</strong> internal artifacts and external citations are complementary, not interchangeable [1][4].</div>
+          <h3>Qualitätsregel</h3>
+          <p class="small">Öffentliche Claims sollten auf Quellspur, Evidenzklasse, Stützstatus und Caveat-Set abbildbar sein. Alles Schwächere sollte als Interpretation oder Aspiration markiert bleiben.</p>
+          <div class="note" style="margin-top:12px;"><strong>Kernregel:</strong> interne Artefakte und externe Zitate sind komplementär, nicht austauschbar [1][4].</div>
         </div>
       </div>
     </section>
 
     <section class="section" id="components">
-      <div class="kicker">System decomposition</div>
+      <div class="kicker">Systemzerlegung</div>
       <h2>Komponentenmatrix</h2>
       <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Component</th><th>Function</th><th>Main inputs</th><th>Main outputs</th><th>Main failure mode</th></tr>
+          <tr><th>Komponente</th><th>Funktion</th><th>Haupteingaben</th><th>Hauptausgaben</th><th>Wichtigster Fehlermodus</th></tr>
         </thead>
         <tbody>
-          <tr><td>Signal layer</td><td>Detect candidate improvement or risk signals</td><td>Telemetry, logs, human observations</td><td>Candidate issue or change request</td><td>Noise mistaken for signal</td></tr>
-          <tr><td>Review layer</td><td>Challenge and prioritize candidate changes</td><td>Signals, historical context, human judgment</td><td>Explicit decision or rejection</td><td>Weak triage or unchallenged assumptions</td></tr>
-          <tr><td>Intervention layer</td><td>Apply a bounded change</td><td>Approved rule, patch, routing change, workflow update</td><td>Modified system condition</td><td>Change without reversibility or traceability</td></tr>
-          <tr><td>Runtime layer</td><td>Execute bounded agent behavior</td><td>Current configuration and user tasks</td><td>Observable behavior</td><td>Local success mistaken for general capability</td></tr>
-          <tr><td>Measurement layer</td><td>Estimate effect and caveats</td><td>Before/after traces, same-snapshot comparisons, reviewer notes</td><td>Begrenzt effect statement</td><td>Overclaiming from sparse or non-longitudinal evidence</td></tr>
+          <tr><td>Signal-Layer</td><td>Erkennt potenzielle Verbesserungs- oder Risikosignale</td><td>Telemetry, logs, human observations</td><td>Kandidaten-Issue oder Änderungsanfrage</td><td>Rauschen wird als Signal fehlgedeutet</td></tr>
+          <tr><td>Review-Layer</td><td>Hinterfragt und priorisiert Kandidatenänderungen</td><td>Signals, historical context, human judgment</td><td>Explizite Entscheidung oder Ablehnung</td><td>Schwache Triage oder unhinterfragte Annahmen</td></tr>
+          <tr><td>Interventions-Layer</td><td>Setzt eine begrenzte Änderung um</td><td>Approved rule, patch, routing change, workflow update</td><td>Veränderter Systemzustand</td><td>Änderung ohne Reversibilität oder Nachverfolgbarkeit</td></tr>
+          <tr><td>Runtime-Layer</td><td>Führt begrenztes Agentenverhalten aus</td><td>Current configuration and user tasks</td><td>Beobachtbares Verhalten</td><td>Lokaler Erfolg wird als generelle Fähigkeit fehlgedeutet</td></tr>
+          <tr><td>Mess-Layer</td><td>Schätzt Effekt und Caveats</td><td>Before/after traces, same-snapshot comparisons, reviewer notes</td><td>Begrenzt effect statement</td><td>Überclaiming auf Basis dünner oder nicht-longitudinaler Evidenz</td></tr>
         </tbody>
       </table>
       </div>
