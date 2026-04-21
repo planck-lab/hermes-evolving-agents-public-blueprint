@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Hermes Evolving Agents Roadmap"
+message: "If you use this blueprint, please cite the repository and website."
+type: dataset
+authors:
+  - family-names: "Rummel"
+    given-names: "Jan"
+abstract: >-
+  Evidence-first blueprint for bounded agent maturity, governance framing,
+  and challengeable public claims.
+keywords:
+  - ai-agents
+  - bounded-autonomy
+  - ai-governance
+  - evidence-first
+  - scientific-communication
+license: MIT

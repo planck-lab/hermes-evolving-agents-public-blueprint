@@ -5,56 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hermes Evolving Agents Roadmap — Evidence-First Blueprint</title>
   <meta name="description" content="Evidence-first public blueprint for bounded agent maturity, governance, and challengeable claims.">
+  <meta property="og:title" content="Hermes Evolving Agents Roadmap">
+  <meta property="og:description" content="Evidence-first blueprint for bounded agent maturity, governance framing, and challengeable public claims.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hermes Evolving Agents Roadmap">
+  <meta name="twitter:description" content="Evidence-first blueprint for bounded agent maturity, governance framing, and challengeable public claims.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌑</text></svg>">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f4f7fb;
-      --surface: #ffffff;
-      --surface-2: #eef4ff;
-      --surface-3: #f8fafc;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #d9e2ec;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --green-soft: #dcfce7;
-      --amber-soft: #fff7d6;
-      --rose-soft: #ffe4e6;
-      --shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      color-scheme: dark;
+      --bg: #0b1020;
+      --surface: rgba(14, 20, 38, 0.92);
+      --surface-2: #101935;
+      --surface-3: #151f3d;
+      --text: #edf2ff;
+      --muted: #9fb0d1;
+      --line: rgba(148, 163, 184, 0.18);
+      --accent: #7cc4ff;
+      --accent-2: #9b8cff;
+      --accent-soft: rgba(124, 196, 255, 0.14);
+      --green-soft: rgba(74, 222, 128, 0.14);
+      --amber-soft: rgba(251, 191, 36, 0.14);
+      --rose-soft: rgba(251, 113, 133, 0.14);
+      --shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background: linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
-      line-height: 1.65;
+      background:
+        radial-gradient(circle at top right, rgba(124, 196, 255, 0.10), transparent 24%),
+        radial-gradient(circle at top left, rgba(155, 140, 255, 0.10), transparent 22%),
+        linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+      line-height: 1.68;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 72px; }
     .topnav {
       display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
-      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px);
-      background: rgba(244,247,251,.88); padding: 10px 0;
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+      background: rgba(11,16,32,.72); padding: 10px 0;
     }
     .pill {
       display: inline-flex; align-items: center; gap: 8px;
       border-radius: 999px; padding: 8px 12px; font-size: 14px; font-weight: 600;
-      background: var(--surface); border: 1px solid var(--line);
+      background: rgba(21,31,61,0.88); border: 1px solid var(--line); color: var(--text);
     }
-    .pill.primary { background: var(--accent-soft); color: #1d4ed8; border-color: #bfdbfe; }
-    .pill.success { background: var(--green-soft); color: #166534; border-color: #bbf7d0; }
-    .pill.warning { background: var(--amber-soft); color: #92400e; border-color: #fde68a; }
+    .pill.primary { background: var(--accent-soft); color: #9fd6ff; border-color: rgba(124,196,255,0.28); }
+    .pill.success { background: var(--green-soft); color: #8cf0b0; border-color: rgba(74,222,128,0.24); }
+    .pill.warning { background: var(--amber-soft); color: #ffd27d; border-color: rgba(251,191,36,0.24); }
     .hero, .section {
       background: var(--surface); border: 1px solid var(--line); border-radius: 28px;
       box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
     }
     .hero {
-      background: radial-gradient(circle at top right, rgba(37,99,235,.16), transparent 30%), var(--surface);
+      background:
+        radial-gradient(circle at top right, rgba(124,196,255,.14), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(155,140,255,.12), transparent 24%),
+        var(--surface);
     }
     .eyebrow, .kicker {
-      color: var(--accent); text-transform: uppercase; font-size: 12px; letter-spacing: .05em; font-weight: 800;
+      color: var(--accent); text-transform: uppercase; font-size: 12px; letter-spacing: .08em; font-weight: 800;
       margin-bottom: 12px;
     }
     h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.04; margin: 0 0 14px; }
@@ -79,22 +94,22 @@
     th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 10px 8px; vertical-align: top; }
     th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
     .figure {
-      width: 100%; background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+      width: 100%; background: linear-gradient(180deg, rgba(18,27,52,0.9) 0%, rgba(13,20,39,0.98) 100%);
       border: 1px solid var(--line); border-radius: 20px; padding: 14px;
     }
     .figure img { width: 100%; display: block; border-radius: 16px; }
     .caption { color: var(--muted); font-size: 14px; margin-top: 10px; }
     .note {
-      padding: 14px 16px; border-radius: 16px; background: var(--surface-2); border: 1px solid #bfdbfe; color: #1e3a8a;
+      padding: 14px 16px; border-radius: 16px; background: var(--surface-2); border: 1px solid rgba(124,196,255,0.24); color: #b8ddff;
     }
-    .risk { background: #fff7ed; border-color: #fdba74; color: #9a3412; }
+    .risk { background: rgba(120, 53, 15, 0.24); border-color: rgba(251,191,36,0.24); color: #ffd8a8; }
     .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
     .footer { color: var(--muted); font-size: 14px; margin-top: 20px; }
     @media (max-width: 920px) {
       .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 12; }
       .topnav { position: static; }
     }
-  </style>
+</style>
 </head>
 <body>
   <main class="wrap">
@@ -145,7 +160,7 @@
       <h2>Visual story</h2>
       <div class="grid">
         <div class="span-7">
-          <div class="figure"><img src="../docs/assets/bounded-agent-learning-loop.svg" alt="Bounded agent learning loop"></div>
+          <div class="figure"><img src="assets/bounded-agent-learning-loop.svg" alt="Bounded agent learning loop"></div>
           <p class="caption"><strong>Figure A.</strong> Public-facing architecture of the bounded learning loop: signal, review, intervention, runtime, and measurement within a governance frame.</p>
         </div>
         <div class="span-5 card">
@@ -161,7 +176,7 @@
           <p class="small">A good public figure reduces interpretive ambiguity. It should make it harder to confuse internal experimentation with validated system capability [1][4].</p>
         </div>
         <div class="span-7">
-          <div class="figure"><img src="../docs/assets/evidence-ladder.svg" alt="Evidence ladder for bounded public claims"></div>
+          <div class="figure"><img src="assets/evidence-ladder.svg" alt="Evidence ladder for bounded public claims"></div>
           <p class="caption"><strong>Figure B.</strong> Evidence ladder for keeping observation, interpretation, decision, measurement, and publication distinct.</p>
         </div>
       </div>

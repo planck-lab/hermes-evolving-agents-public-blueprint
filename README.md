@@ -1,15 +1,38 @@
-# Hermes Evolving Agents Roadmap
+<p align="center">
+  <img src="docs/assets/evidence-ladder.svg" width="220" alt="Hermes Evolving Agents Roadmap">
+</p>
 
-Local blueprint for a future public DE/EN release about the maturity of a learning-capable agent system.
-This version is depersonalized, evidence-oriented, and now coherent enough for a conservative public release if desired.
+<h1 align="center">Hermes Evolving Agents Roadmap</h1>
+
+<p align="center">
+  <strong>Evidence-first blueprint for bounded agent maturity.</strong><br>
+  DE/EN narrative, governance framing, claim discipline, and release-ready public communication.
+</p>
+
+<p align="center">
+  <a href="#abstract">Abstract</a> ·
+  <a href="#start-with-the-right-path">Reading Path</a> ·
+  <a href="#recommended-figures-and-tables">Figures & Tables</a> ·
+  <a href="#references">References</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-public-blue" alt="Status">
+  <img src="https://img.shields.io/badge/claims-bounded-important" alt="Claims">
+  <img src="https://img.shields.io/badge/languages-DE%20%2F%20EN-6f42c1" alt="Languages">
+  <img src="https://img.shields.io/badge/site-GitHub%20Pages-0a0a0a" alt="Site">
+</p>
+
+Local blueprint for a public DE/EN release about the maturity of a learning-capable agent system.
+This version is depersonalized, evidence-oriented, and intentionally narrow in its public claims.
 
 ## Abstract
 This repository presents an **evidence-first blueprint** for reasoning about agent maturity under controlled risk rather than full autonomy. The core public claim is deliberately narrow: the current system posture is best read as a bounded, human-supervised learning setup with partial feedback closure, not as a proven self-improving autonomous system. The evaluation and governance framing in this repo is aligned with established work on AI risk management, human oversight, and multi-dimensional model/agent evaluation [1][2][3][4].
 
 ## Status
-- **Current posture:** bounded public-release candidate, still unpublished
+- **Current posture:** public evidence-first blueprint
 - **Current claim posture:** bounded, evidence-first, non-longitudinal
-- **Best use right now:** review the narrative, inspect the evidence model, or publish the bounded blueprint with its current conservative framing
+- **Best use right now:** review the narrative, inspect the evidence model, or use the site as a bounded public reference artifact
 
 ## Scientific basis and claim discipline
 This blueprint distinguishes:
