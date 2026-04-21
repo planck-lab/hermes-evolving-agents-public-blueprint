@@ -117,6 +117,27 @@ Structured files for:
 ### Release-decision material
 Documents and JSON artifacts that track readiness, remaining polish work, and the current publish-now verdict.
 
+## Quick start
+1. Read the public landing page in `docs/index.html` or the live GitHub Pages site.
+2. Follow the canonical reading path in `docs/en/index.md` or `docs/de/index.md`.
+3. Inspect `data/claim-source-map.json` and `data/evidence-register.json` for the machine-readable layer.
+
+## FAQ
+### What is the main claim?
+A narrow one: this repo describes a **bounded, evidence-first** reading of agent maturity, not a proof of broad autonomous self-improvement.
+
+### Is this a research paper?
+No. It is a **public blueprint** for scientific-style communication: bounded claims, visible caveats, explicit sources, and structured evidence artifacts.
+
+### Why both DE and EN?
+Because the repo is meant to be legible both for local/native readers and for broader public review.
+
+### What should a skeptical reader inspect first?
+Start with `docs/en/system-scope.md`, `docs/en/methodology.md`, `docs/en/evidence.md`, and `docs/en/proof-case-final-verdict.md`.
+
+### How should this repo be cited or reused?
+Use the `CITATION.cff` metadata and keep any reuse aligned with the same bounded-claim discipline.
+
 ## Recommended figures and tables
 The repo/website now emphasizes a compact set of explanatory artifacts:
 - one **architecture diagram**
@@ -167,7 +188,9 @@ The repo/website now emphasizes a compact set of explanatory artifacts:
 - `data/` — claim/evidence/phase/proof-case JSON artifacts
 - `site/` — local landing page and static presentation layer
 - `docs/index.html` — GitHub Pages website entrypoint
-- `assets/` — diagrams and figures
+- `docs/assets/` — diagrams, figures, and social-preview image
+- `CONTRIBUTING.md` — contribution and review guidelines
+- `CITATION.cff` — citation metadata
 
 ## Release readiness
 Confirmatory go/no-go check is complete.
@@ -190,3 +213,6 @@ Currently maintained in a GitHub repository with public-release readiness as the
 [6] Liu et al., *AgentBench*, 2023. https://arxiv.org/abs/2308.03688  
 [7] Mialon et al., *GAIA*, 2023. https://arxiv.org/abs/2311.12983  
 [8] Jimenez et al., *SWE-bench*, ICLR 2024. https://openreview.net/forum?id=VTF8yNQM66
+
+## Contributing
+See `CONTRIBUTING.md` for contribution rules, claim discipline, and local preview instructions.
